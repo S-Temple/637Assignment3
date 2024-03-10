@@ -18,52 +18,62 @@ Text…
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
-DataUtilities.calculateColumnTotal:
+## DataUtilities.calculateColumnTotal:
 
 
 
-Range.contains:
-1 public boolean contains(double value) {
-2       if (value < this.lower) {
-3           return false;
-4       }
-5       if (value  > this.upper) {
-6           return false;
-7       }
-8       return (value >= this.lower && value <= this.upper);
-9   }
-Data Flow Chart:
+## Range.contains:
 
-Here are the def-use sets per statement:
-	line:statement
+    1 public boolean contains(double value) {
+    2       if (value < this.lower) {
+    3           return false;
+    4       }
+    5       if (value  > this.upper) {
+    6           return false;
+    7       }
+    8       return (value >= this.lower && value <= this.upper);
+    9 }
+
+### Data Flow Graph:
+
+![DFG](RangeDataFlowDiagram.png)
+
+### def-use sets per statement/line:
+
+line: statement
+
 1: public boolean contains(double value) {
-Def: value
-Use: None
+
+    Def: value
+    Use: None
+
 2: if (value < this.lower) {
-Def: None
-Use: value
+
+    Def: None
+    Use: value
 3: return false;
-Def: None
-Use: value
+
+    Def: None
+    Use: value
 5:if (value  > this.upper) {
-Def: None
-Use: value, this.upper
+
+    Def: None
+    Use: value, this.upper
 6: return false;
-Def: None
-Use: value
+
+    Def: None
+    Use: value
 8: return (value >= this.lower && value <= this.upper);
-Def: None
-Use: value, this.lower
+
+    Def: None
+    Use: value, this.lower
 
 list all DU-pairs per variable:
-Variable
-Def in node
-DCU
-DPU
-value
-1
-{1}
-{(2,3),(2,4),(3,5),(3,6)}
+
+| Variable | Def in node | DCU | DPU |
+|----------|-------------|-----|-----|
+| value    |1| {1} |{(2,3),(2,4),(3,5),(3,6)}|
+
 
 CU = 1, PU = 4
 
@@ -75,7 +85,7 @@ TC2:value>upper
 
 TC3:lower<value<upper
 
-Other infeasible as impossible to have Range with lower > upper. Making line 8 the same as: return true; 
+Other infeasible as it is impossible to have Range with lower > upper. Making line 8 the same as: return true; 
 Good defensive programming to write line 8 the way it is though.
 
 As such it's impossible to improve coverage.
