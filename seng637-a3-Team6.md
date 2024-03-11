@@ -154,9 +154,9 @@ public static double calculateColumnTotal(Values2D data, int column,
 ## Def-use sets per statement:
 
 1. ParamChecks.nullNotPermitted(data, "data");
-- Def: None (method call, no variables defined)
-- Use: data
-2. double total = 0.0;
+Def: None (method call, no variables defined)
+Use: data
+3. double total = 0.0;
 - Def: total
 - Use: None
 3. if (total > 0){ total = 100; }
