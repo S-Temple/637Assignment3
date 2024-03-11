@@ -405,12 +405,18 @@ Our team divided work based on individual strengths. We assigned the manual data
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
 
-Importing libraries cause a varity of errors for team members. Hours of troubleshooting were required to get eclipse, imported librarys, imported tests and EclEmma to work. 
+In addition to the initial challenges, we faced difficulties in manually calculating data flow coverage due to the complexity of understanding the flow of data through the code. This exercise, while challenging, significantly improved our comprehension of how data moves within programs and how this affects testing strategies. We learned the importance of thorough code understanding before test case development, enhancing our ability to write more effective tests.
+
+Regarding lessons learned, one thing that helped significantly was the practice of reflection and feedback—both on the technical aspects of testing and our teamwork. After developing new design tests, we took the time to reflect on what worked, what didn't, and how we could improve which gave us new insights to different ways of coding.
+
+Another lesson was that coverage is a valuable tool for pinpointing what's lacking in test cases. However, it only evaluates if the tests address all aspects of the code, overlooking the requirements. The requirements are important as well in regards to testing, so both work in unison to provide a comprehensive evaluation of the software's functionality and reliability.
+
 
 # 10 Comments/feedback on the lab itself
 
-Text…
+The assignment was well-structured, providing a clear pathway from understanding the basics of testing to applying complex coverage criteria. It was a great opportunity to benchmark how well our unit testing using black-box test-case design techniques in the previous assignment performed, and also how much we could improve it by.
 
+However, a more detailed guide on selecting and using code coverage tools would be beneficial, as some team members found the initial setup challenging. Overall, the assignment was an eye-opening learning experience, offering practical skills in testing and insights into test adequacy and code coverage.
 
 ## 5 Evaluation Criteria
 5.1 JUnit Test Suite (50%)
