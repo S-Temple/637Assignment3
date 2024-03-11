@@ -25,15 +25,16 @@ Using EclEmma. Complexity here refers to cyclomatic complexity paths covered.
 ## Range
 
 Constructor:
-8/8 lines - 100% statement coverage
-2/2 branches - 100% branch coverage
-2/2 complexity - 100% complexity coverage
+- 8/8 lines - 100% statement coverage
+- 2/2 branches - 100% branch coverage
+- 2/2 complexity - 100% complexity coverage
 
-Note both upper/lower/length methods use bound checks that lower is not > upper. We tried to create conditions to run that code and see no way to update or change lower/upper without memory editing. None of the other methods edit upper or lower; they just instantiate a new Range so with the constructor stopping any lower > upper its impossible to create such conditions.
+**Note both upper/lower/length methods use bound checks that lower is not > upper. We tried to create conditions to run that code and see no way to update or change lower/upper without memory editing. None of the other methods edit upper or lower; they just instantiate a new Range so with the constructor stopping any lower > upper its impossible to create such conditions.**
+
 getLowerBound:
-2/5 Lines- 40% statement coverage
-1/2  branches - 50% branch coverage
-1/2 complexity - 50% complexity coverage
+- 2/5 Lines- 40% statement coverage
+- 1/2  branches - 50% branch coverage
+- 1/2 complexity - 50% complexity coverage
 	
 getUpperBound:
 2/5 Lines- 40% statement coverage
