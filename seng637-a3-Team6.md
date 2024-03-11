@@ -24,61 +24,74 @@ Using EclEmma. Complexity here refers to cyclomatic complexity paths covered.
 
 ## Range
 
-Constructor:
-8/8 lines - 100% statement coverage
-2/2 branches - 100% branch coverage
-2/2 complexity - 100% complexity coverage
+Instruction coverage before changes
+![Instruction coverage before changes](/media/RangeInstructionCoverageBefore.png)
 
-Note both upper/lower/length methods use bound checks that lower is not > upper. We tried to create conditions to run that code and see no way to update or change lower/upper without memory editing. None of the other methods edit upper or lower; they just instantiate a new Range so with the constructor stopping any lower > upper its impossible to create such conditions.
+
+Instruction Coverage is more detailed then statement as the contains method shows 100% statement but 92.9% isntruction coverage. This is why we used Instruction coverage instead of line/statement coverage for the Range class. It will hopefully allow for improvement in futher sections of the assignment.
+
+Branch coverage before changes
+![Branch coverage before changes](/media/RangeBranchCoverageBefore.png)
+
+Cyclomatic complexity coverage before changes
+![cyclomatic complexity coverage before changes](/media/RangeComplexityBefore.png)
+
+Constructor:
+    
+    22/22 instructions - 100% instructions coverage
+    2/2 branches - 100% branch coverage
+    2/2 complexity - 100% complexity coverage
+
 getLowerBound:
-2/5 Lines- 40% statement coverage
-1/2  branches - 50% branch coverage
-1/2 complexity - 50% complexity coverage
+
+    9/20 instructions- 45% instructions coverage
+    1/2  branches - 50% branch coverage
+    1/2 complexity - 50% complexity coverage
 	
 getUpperBound:
-2/5 Lines- 40% statement coverage
-1/2 branches - 50% branch coverage
-1/2 complexity - 50% complexity coverage
+
+    9/20 instructions- 45% instructions coverage
+    1/2  branches - 50% branch coverage
+    1/2 complexity - 50% complexity coverage
 
 getLength:
-2/5 Lines- 40% statement coverage
-1/2  branches - 50% branch coverage
-1/2 complexity - 50% complexity coverage
+
+    12/23 instructions- 52.2% instructions coverage
+    1/2  branches - 50% branch coverage
+    1/2 complexity - 50% complexity coverage
 
 getCentralValue:
-1/1 line- 100% statement coverage
-No branches to cover - 100% branch coverage
-1/1 complexity - 100% complexity coverage
+
+    10/10 instructions- 100% instructions coverage
+    No branches to cover - 100% branch coverage
+    1/1 complexity - 100% complexity coverage
 
 Contains:
-5/5 Lines- 100% statement coverage
-6/8 branches, - 75% branch coverage
-3/5 complexity - 60% complexity coverage
+    
+    26/28 instructions- 92.9% instructions coverage
+    6/8 branches, - 75% branch coverage
+    3/5 complexity - 60% complexity coverage
 
 Constrain:
-8/8 Lines- 100% statement coverage
-5/6 branches - 83.33% branch coverage 
-another weird case will have to look into.
-3/4 complexity - 75% complexity coverage
+
+    25/25 instructions- 100% instructions coverage
+    5/6 branches - 83.33% branch coverage 
+    3/4 complexity - 75% complexity coverage
 	
 Equals:
-7/8 Lines- 87.5% statement coverage
-5/6  branches - 83.33% branch coverage
-3/4 complexity - 75% complexity coverage
+
+    24/26 instructions- 92.3% instructions coverage
+    5/6  branches - 83.33% branch coverage
+    3/4 complexity - 75% complexity coverage
 
 Range Totals for intentionally covered methods:
-30/40 Instructions = 75% Instruction Coverage
-21/28 branch paths = 75% branch coverage
-12/17 complexity = 70.59% complexity coverage
+(all except contains method)
 
-![Figure1: Original Range statement(line) coverage](media/image3.png)
-Figure1: Original Range statement(line) coverage
+    108/146 Instructions = 74% Instruction Coverage
+    21/28 branch paths = 75% branch coverage
+    12/17 complexity = 70.59% complexity coverage
 
-![Figure2: Original Range branch Coverage](media/image4.png)
-Figure2: Original Range branch Coverage
 
-![Figure 3: Original Range Complexity Coverage](media/image1.png)
-Figure 3: Original Range Complexity Coverage
 
 Junit in combination with EclEmma provided all the information we needed.
 
@@ -281,56 +294,30 @@ calculateColumnTotal and calculateRowTotal were updated with new test cases for 
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
-Range
-Added actual tests for contains. This results in no change to coverage amount as all actually reachable branch results were already covered. The coverage is actually intended now though
-5/5 instructions -> 5/5 instructions (no change) - 100% statement
-6/8 branches -> 6/8 branches (no change) - 75% branch coverage
-3/5 complexity - 60% complex (no change) - 60% complexity
+## Range
+changes inculde adding actual intentional tests for contains with no added coverage. The equals method now has a test for non range objects that brings its coverage up to 100%. We will explain in deatil later why its impossible to add tests to increase coverage for most of the methods without changeing the source code and after how one would change the source code to get 100% coverage.
+	
+Equals:
 
-Range Totals remain at:
-35/45 Instructions = 77.77% Instruction Coverage
-27/36 branch paths = 75% branch coverage
-15/22 complexity = 68.18% complexity coverage
+    before:
+    24/26 instructions- 92.3% instructions coverage
+    5/6  branches - 83.33% branch coverage
+    3/4 complexity - 75% complexity coverage
 
-![RLC](media/image12.png)
-Range Line coverage
+    after:
+    26/26 instructions- 100% instructions coverage
+    6/6  branches - 100% branch coverage
+    4/4 complexity - 100% complexity coverage
 
-![RBC](media/image4.png)
-Range Branch Coverage
+New Range Totals for intentionally covered methods:
 
-![RCC](media/image1.png)
-Range complexity coverage
-
-DataUtilities
-Added two tests for getCumulativePercentages:
-One including infinity/NaN values
-One including null values
-
-Other covered methods only had statements/branches that could not actually be reached so coverage could not be increased.
-
-getCumulativePercentages:
-15/18 -> 15/18 Lines (No change) - 83.3% Instruction Coverage
-7/12 -> 9/12 branches - 75% branch coverage (+16.67%)
-3/7 -> 5/7 complexity - 71.43% complexity coverage (+28.57%)
-
-
-DataUtilities Totals for intentionally covered methods:
-44/53 Instructions = 83.02% Instruction Coverage (No change)
-23/32 branch paths = 71.88% branch coverage (+6.25%)
-15/21 complexity = 71.43% complexity coverage (+9.53%)
-
-![RLC](media/image8.png)
-Data Utilities statement coverage
-
-![DUBC](media/image7.png)
-Data Utilities branch coverage
-
-![DUCC](media/image6.png)
-Data Utilities complexity coverage
+    136/174 Instructions = 78.2% Instruction Coverage
+    28/36 branch paths = 77.8% branch coverage
+    16/22 complexity = 72.7% complexity coverage
 
 ### Instruction Coverage
 ![Instruction coverage](/media/RangeInstrucitonCoverageAfter.png)
-As shown above the equals method now has 100% coverage now that the test for when it is passed a non range object.
+As shown above the equals method now has 100% coverage due to the additional test for when it is passed a non range object.
 
 Details of the tested methods with less than 100% coverage:
 
@@ -346,7 +333,7 @@ Details of the tested methods with less than 100% coverage:
         return (value >= this.lower && value <= this.upper);
     }
 
-The last 7.1% is from the last return statement only ever being evaluated to true as false can only occur if the lower bound is greater then the upper. lower will never be higher then upper as there are no setter methods and the constructor prevents a Range object from being created with lower higher then upper.
+The last 7.1% is from the final return statement only ever being evaluated to true as false can only occur if the lower bound is greater then the upper. lower will never be higher then upper as there are no setter methods and the constructor prevents a Range object from being created with lower higher then upper.
 
 52.2% coverange of getLength
 
@@ -364,7 +351,7 @@ In summary the only reason the tests don't have 100% coverage is because the con
 ### Branch Coverage
 ![Branch Coverage](/media/RangeBranchCoverageAfter.png)
 
-Same as instruction coverage the get methods for upper lower and length have the same issue where the code inside if (lower > upper) will never be ran.
+Same as instruction coverage the get methods for upper, lower, and length have the same issue where the code inside if (lower > upper) will never be ran.
 
 The contains method has simlar issue to before where this method has branchs that will never run due to how the method is written.
 original:
@@ -416,13 +403,41 @@ Cleaner code that will allow all branches and intructions to be covered:
     }
 
 ### Cyclomatic Complexity Coverage
-![Complexity Coverage after fixes](/media/CyclomaticComplexityAfter.png)
+![Complexity Coverage after fixes](/media/RangeCyclomaticComplexityAfter.png)
 
 For all the same reasons as before the get methods for upper, lower and length only have 50% coverage with no way to improve without just removing the bound checking in the source code.
 
 equals method now has 100% coverage due to the test using non Range object. 
 
 Constrain and contains have less than 100% coverage for the same reasons as before. Without altering the source code as shown in the branch coverage section it is impossible to increase the coverage.
+
+## DataUtilities
+Added two tests for getCumulativePercentages:
+One including infinity/NaN values
+One including null values
+
+Other covered methods only had statements/branches that could not actually be reached so coverage could not be increased.
+
+getCumulativePercentages:
+15/18 -> 15/18 Lines (No change) - 83.3% Instruction Coverage
+7/12 -> 9/12 branches - 75% branch coverage (+16.67%)
+3/7 -> 5/7 complexity - 71.43% complexity coverage (+28.57%)
+
+
+DataUtilities Totals for intentionally covered methods:
+44/53 Instructions = 83.02% Instruction Coverage (No change)
+23/32 branch paths = 71.88% branch coverage (+6.25%)
+15/21 complexity = 71.43% complexity coverage (+9.53%)
+
+![RLC](media/image8.png)
+Data Utilities statement coverage
+
+![DUBC](media/image7.png)
+Data Utilities branch coverage
+
+![DUCC](media/image6.png)
+Data Utilities complexity coverage
+
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
