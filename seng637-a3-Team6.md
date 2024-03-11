@@ -365,7 +365,35 @@ In summary the only reason the tests don't have 100% coverage is because the con
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
-Text…
+This report employs EclEmma for reporting coverage metrics, benefiting from its support for statement and branch coverage, albeit lacking support for condition coverage. Despite exploring alternative tools, achieving condition coverage proved challenging. For example, although CodeCover offers condition coverage, it seems to have been discontinued from support, resulting in errors when attempting to use it with the current version of Eclipse. Upon researching the issue, it was found that only Eclipse Kepler is compatible with CodeCover. Attempts to install Eclipse Kepler for testing CodeCover encountered difficulties running JFreeChart code in that version. While JaCoCo presents a similar feature set to EclEmma, with no notable differences, the latter remains preferred. Clover, another tool that was successfully installed, unfortunately, did not recognize any of the JUnit test cases, consistently reporting zero coverage. This issue suggests that either some refactoring of the test suite setup is necessary or a more advanced configuration of the Eclipse workspace is required to operationalize Clover effectively, necessitating users to compile it themselves for IDE integration, a process hindered by inadequate instructions. As a result, EclEmma served as the sole tool for all test coverage assessments, replacing condition coverage with complexity coverage together with branch coverage and instruction coverage.
+
+## EclEmma
+EclEmma is a tool that seamlessly integrates with Eclipse and JUnit, providing immediate feedback on statement and branch coverage, which are easily highlighted. It features instruction coverage, which lists the amount of bytecode instructions covered. However, this metric can be somewhat misleading as the numbers do not directly correlate with lines of code. This discrepancy means that missing certain instructions could significantly impact the coverage percentage. This detail is particularly relevant for lines containing complex instructions, as ensuring these instructions are tested may disproportionately influence the coverage metric.
+
+Line coverage, on the other hand, is straightforward, indicating the specific lines of code that tests cover. It offers a clear visual on which portions of the code are tested but falls short in detailing complex interactions, such as branch or condition coverage.
+
+Branch coverage focuses on the decision points within the code, allowing developers to identify which conditions have not been fully explored. However, it lacks specificity in indicating which particular branch or condition was missed, necessitating manual investigation to address these gaps.
+
+Complexity coverage delves into the paths taken through an entire method, shedding light on more intricate behaviors and the effectiveness of test coverage on method utilization. Like branch coverage, it does not specify which paths were or were not covered, requiring further manual analysis to enhance coverage. Unfortunately, there is no easily visible overlay over the code for this metric.
+
+Method coverage is simpler, essentially indicating whether a method has been tested. This is particularly useful for larger codebases, helping identify untested methods. However, in the context of this lab, its utility is limited due to the ease of manually tracking method coverage.
+
+### Features and Limitations
+
+- **Works out of the box with Eclipse + JUnit**
+- **Highlights statement/branch coverage easily**
+
+- **Instruction coverage**: lists amount of bytecode instructions covered, somewhat misleading as the numbers are not 1-1 with lines of code, so depending on which instructions are missed, may have a larger impact on coverage percentage.
+- **Line Coverage**: individual lines of code covered, easy to understand and can tell at a glance what portions of code tests cover. Doesn’t fully explain the more complex interactions for metrics like branch or condition coverage.
+- **Branch coverage**: branch decisions covered, easily see which are not fully explored, to see which conditions tests need to be based around. Does not seem to tell you which specific branch condition(s) were missed just that some were missed. So manual investigation will need to be done to find this out.
+- **Complexity coverage**: paths through the entire method taken, covers more complex behaviors. Can give you an idea of how well the method is utilized by the tests. Does not tell you which possible paths are covered/missed so manual investigation will have to be done to figure out how to raise this coverage. No easily visible overlay over the code.
+- **Methods coverage**: mostly just tells you if a method is covered or not. Useful on a larger codebase scale, to see if methods are missed by testing. On the scale of this lab, however, it is pretty useless as it's easy to keep track of this manually.
+
+## CodeCover
+The instructions on the code cover site for installing the Eclipse Plugin do not seem to work so this could not be tested.
+
+## Clover
+Able to install, but could not get it to recognize any of the JUnit test cases. Always returned zero coverage. Appears to need some refactoring of test suite setup or more advanced Eclipse workspace setup to get working.
 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
