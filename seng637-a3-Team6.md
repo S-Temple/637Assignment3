@@ -525,26 +525,3 @@ The assignment was well-structured, providing a clear pathway from understanding
 
 However, a more detailed guide on selecting and using code coverage tools would be beneficial, as some team members found the initial setup challenging. Overall, the assignment was an eye-opening learning experience, offering practical skills in testing and insights into test adequacy and code coverage.
 
-## 5 Evaluation Criteria
-5.1 JUnit Test Suite (50%)
-The test suite will be required to be submitted along with the lab report. Students will be graded on their unit tests. The grading criteria are as follows.
-
-Marking Scheme	
-Code coverage: lesser coverage than coverage target specified in lab instructions above, would decrement your mark proportionally, unless you explain it by a valid the reason (e.g., infeasible path)	20%
-Clarity (are they easy to follow, through commenting or style, etc.?)	15%
-Correctness (do the tests actually test what they are intended to test?)	15%
-
-5.2 Lab Report (50%)
-Students will be required to submit a report on their work in the assignment as a group. To be consistent, please use the template markdown file (seng637-a3-team_number.md) provided online under the Assignment 3 folder. If desired, feel free to rename the sections, as long as the headings are still descriptive and accurate. In the report should be included.
-
-Marking Scheme	
-Manual data-flow coverage calculations the two mentioned methods	15%
-A detailed description of the testing strategy for the new unit tests	5%
-A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage	10%
-A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)	5%
-Pros and cons of the coverage tools tried by your group in this assignment, in terms of reported measures, integration with the IDE and other plug-ins, user friendliness, crashes, etc.	5%
-A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.	5%
-A discussion on how the team work/effort was divided and managed	2%
-Any difficulties encountered, challenges overcome, and lessons learned from performing the assignment	2%
-Comments/feedback on the assignment itself	1%
-A portion of the grade for the lab report will be allocated to organization and clarity.
