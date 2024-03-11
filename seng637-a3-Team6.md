@@ -96,35 +96,35 @@ Range Totals for intentionally covered methods:
 Junit in combination with EclEmma provided all the information we needed.
 
 ## DataUtilities
-calculateColumnTotal 
-9/12 Lines= 75% statement Coverage
-5/8  branches = 62.5% branch coverage
-3/5 complexity - 60% complexity coverage
+**calculateColumnTotal**
+  - 9/12 Lines = 75% statement Coverage 
+  - 5/8 Branches = 62.5% branch coverage 
+  - 3/5 Complexity = 60% complexity coverage
+    
+**calculateRowTotal**
+- 9/12 Lines = 75% Instruction Coverage
+- 5/8 Branches = 62.5% branch coverage
+- 3/5 Complexity = 60% complexity coverage
 
-calculateRowTotal
-	9/12 Lines= 75% Instruction Coverage
-	5/8  branches = 62.5% branch coverage
-	3/5 complexity - 60% complexity coverage
+**getCumulativePercentages**
+- 15/18 Lines = 83.3% Instruction Coverage
+- 7/12 Branches fully covered = 58.3% branch coverage
+- 3/7 Complexity= 42.9% complexity coverage
 
-getCumulativePercentages
-	15/18 Lines= 83.3% Instruction Coverage
-	7/12 branches = 58.3% branch coverage
-	3/7 complexity - 42.9% complexity coverage
+**createNumberArray**
+- 5/5 Lines = 100% Instruction Coverage
+- 2/2 fully covered = 100% branch coverage
+- 2/2 = 100% complexity coverage
 
-createNumberArray
-	5/5 Lines= 100% Instruction Coverage
-	2/2 branches fully covered = 100% branch coverage
-	2/2 complexity - 100% complexity coverage
+**createNumberArray2D**
+- 6/6 Lines= 100% Instruction Coverage
+- 2/2 Branches fully covered = 100% branch coverage
+- 2/2 Complexity = 100% complexity coverage
 
-createNumberArray2D
-	6/6 Lines= 100% Instruction Coverage
-2/2 branches fully covered = 100% branch coverage
-2/2 complexity - 100% complexity coverage
-
-DataUtilities Totals for intentionally covered methods:
-44/53 Instructions = 83.02% Instruction Coverage
-21/32 branch paths = 65.63% branch coverage
-13/21 complexity = 61.90% complexity coverage
+**DataUtilities Totals for Intentionally Covered Methods**
+- 44/53 Instructions = 83.02% Instruction Coverage
+- 21/32 Branch paths = 65.63% branch coverage
+- 13/21 Complexity = 61.90% complexity coverage
 
 ![Figure 4: Original Data Utilities Statement (Line) Coverage](media/image8.png)
 Figure 4: Original Data Utilities Statement (Line) Coverage
@@ -137,82 +137,104 @@ Figure 6: Original Data Utilities Complexity Coverage
 
 DataUtilities.calculateColumnTotal:
 
-   public static double calculateColumnTotal(Values2D data, int column,
+```java
+public static double calculateColumnTotal(Values2D data, int column,
             int[] validRows) {
-       ParamChecks.nullNotPermitted(data, "data");
-       double total = 0.0;
-       if (total > 0){
-           total = 100;
-       }
-       int rowCount = data.getRowCount();
-       for (int v = 0; v < validRows.length; v++) {
-           int row = validRows[v];
-           if (row < rowCount) {
-               Number n = data.getValue(row, column);
-               if (n != null) {
-                   total += n.doubleValue();
-               }
-           }
-       }
-       return total;
-   }
+    ParamChecks.nullNotPermitted(data, "data");
+    double total = 0.0;
+    if (total > 0){
+        total = 100;
+    }
+    int rowCount = data.getRowCount();
+    for (int v = 0; v < validRows.length; v++) {
+        int row = validRows[v];
+        if (row < rowCount) {
+            Number n = data.getValue(row, column);
+            if (n != null) {
+                total += n.doubleValue();
+            }
+        }
+    }
+    return total;
+}
+```
 
-Data Flow Chart:
+## Data Flow Chart:
 
-![DFC](media/image2.png)
+![DFC](media/dfg.png)
 
-Def-use sets per statement:
+## Def-use sets per statement:
 
-ParamChecks.nullNotPermitted(data, "data");
-Def: None (method call, no variables defined)
-Use: data
-double total = 0.0;
-Def: total
-Use: None
-if (total > 0){ total = 100; }
-Def: total (inside the block)
-Use: total (condition)
-int rowCount = data.getRowCount();
-Def: rowCount
-Use: data
-for (int v = 0; v < validRows.length; v++) { ... }
-Def: v (initialization)
-Use: validRows (condition), v (condition, increment)
-Inside the loop:
-int row = validRows[v];
-Def: row
-Use: validRows, v
-if (row < rowCount) { ... }
-Def: None
-Use: row, rowCount
-Number n = data.getValue(row, column);
-Def: n
-Use: data, row, column
-if (n != null) { total += n.doubleValue(); }
-Def: total
-Use: n, total
+start/method called: calculateColumnTotal(Values2D data, int column)
+def = {data, column}
+1: ParamChecks.nullNotPermitted(data, "data");
+c use = {data}
 
-List All DU-Pairs Per Variable
-data: Used in ParamChecks, getRowCount(), getValue()
-total: Defined initially and possibly modified in the loop. Used in if condition and for accumulation.
-rowCount: Defined before the loop, used within the loop condition.
-v: Defined and used in the loop.
-validRows: Used in loop condition and to get row.
-row: Defined in the loop, used to get values.
-n: Defined in the loop, used in the null check.
-Coverage per Test Case
+2: double total = 0.0;
+def = {total}
+
+3: int rowCount = data.getRowCount();
+def = {rowCount}
+   	c use = {data}
+
+4: for (int r = 0; r < rowCount; r++) {
+def = {r}
+    	p use = {rowCount}
+
+5: Number n = data.getValue(r, column);
+def = {n}
+ 	   c use = {data, r, column}
+
+6:  if (n != null) {
+p use = {n}
+
+7: total += n.doubleValue();
+c use = {total, n}
+
+8: end of for loop
+ c use = {r}
+    	 p use = {r, rowCount}
+
+9: for (int r2 = 0; r2 > rowCount; r2++) {
+def = {r2}
+    	p use = {rowCount}
+
+10: Number n = data.getValue(r2, column);
+def = {n}
+      	c use = {data, r2, column}
+
+11: if (n != null) {
+p use = {n}
+
+12: total += n.doubleValue();
+c use = {total, n}
+
+13: end of for loop 
+c use = {r2}
+      p use = {r, rowCount}
+
+end/return: return total;
+c use = {total}
+
+## List All DU-Pairs Per Variable
+
+| Variable | Defined in node | DCU (v, n) | DPU (v, n) |
+|----------|-------------|-----|-----|
+| value    |1| {1} |{(2,3),(2,4),(3,5),(3,6)}|
+
+## Coverage per Test Case
 Each test case covers:
-The definition and use of data through mock interactions.
-The initialization and conditional modification of total.
-The definition and use of rowCount through data.getRowCount().
-The loop execution, affecting v, validRows, row, and the internal logic based on n.
+- The definition and use of data through mock interactions.
+- The initialization and conditional modification of total.
+- The definition and use of rowCount through data.getRowCount().
+- The loop execution, affecting v, validRows, row, and the internal logic based on n.
 Specific Coverages:
-With Positive Values: Covers the definition and use of all variables due to loop execution and conditions being met for positive value accumulation.
-With Null Input: Directly covers the null check on data.
-With Negative Values, Mixed Values, Zero Values, Large Dataset, No Rows: Each of these tests covers various aspects of the loop and conditionals, specifically the handling of different value types and quantities.
+- With Positive Values: Covers the definition and use of all variables due to loop execution and conditions being met for positive value accumulation.
+- With Null Input: Directly covers the null check on data.
+- With Negative Values, Mixed Values, Zero Values, Large Dataset, No Rows: Each of these tests covers various aspects of the loop and conditionals, specifically the handling of different value types and quantities.
 
 ## Range.contains:
-
+```java
     1 public boolean contains(double value) {
     2       if (value < this.lower) {
     3           return false;
@@ -222,6 +244,7 @@ With Negative Values, Mixed Values, Zero Values, Large Dataset, No Rows: Each of
     7       }
     8       return (value >= this.lower && value <= this.upper);
     9 }
+```
 
 ### Data Flow Graph:
 
@@ -285,12 +308,12 @@ Where the coverage is initially incomplete or missed, the test code is manually 
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
-For Range we had no new test cases designed as the testing from the last assignment covered all code that is possible to reach. The only parts not covered are inaccessible code that although should never be run is good defensive programming. The details for each method will be covered in later sections.
+For Range we had no new test cases designed as the testing from the last assignment covered all code that is possible to reach. The only parts not covered are inaccessible code that although should never be run is good defensive programming. The details for each method will be covered in later sections.  
 
-For DataUtilities a few updates were made:
-getCumalitivePercentages had to be updated to include test cases for infinite, NaN, and null values. By adding in these test cases the instruction (statement) coverage was increased as some instructions were missed before.
-createNumberArray and createNumberArray2D were updated with new test cases for infinity and NaN values to catch missing branches.
-calculateColumnTotal and calculateRowTotal were updated with new test cases for infinity values to catch missing branches and instructions.
+**For DataUtilities a few updates were made:**
+1. getCumalitivePercentages had to be updated to include test cases for infinite, NaN, and null values. By adding in these test cases the instruction (statement) coverage was increased as some instructions were missed before.
+2. createNumberArray and createNumberArray2D were updated with new test cases for infinity and NaN values to catch missing branches.
+3. calculateColumnTotal and calculateRowTotal were updated with new test cases for infinity values to catch missing branches and instructions.
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
