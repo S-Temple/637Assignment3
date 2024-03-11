@@ -147,79 +147,59 @@ public static double calculateColumnTotal(Values2D data, int column,
 }
 ```
 
-   public static double calculateColumnTotal(Values2D data, int column,
-            int[] validRows) {
-       ParamChecks.nullNotPermitted(data, "data");
-       double total = 0.0;
-       if (total > 0){
-           total = 100;
-       }
-       int rowCount = data.getRowCount();
-       for (int v = 0; v < validRows.length; v++) {
-           int row = validRows[v];
-           if (row < rowCount) {
-               Number n = data.getValue(row, column);
-               if (n != null) {
-                   total += n.doubleValue();
-               }
-           }
-       }
-       return total;
-   }
-
-Data Flow Chart:
+## Data Flow Chart:
 
 ![DFC](media/image2.png)
 
-Def-use sets per statement:
+## Def-use sets per statement:
 
-ParamChecks.nullNotPermitted(data, "data");
-Def: None (method call, no variables defined)
-Use: data
-double total = 0.0;
-Def: total
-Use: None
-if (total > 0){ total = 100; }
-Def: total (inside the block)
-Use: total (condition)
-int rowCount = data.getRowCount();
-Def: rowCount
-Use: data
-for (int v = 0; v < validRows.length; v++) { ... }
-Def: v (initialization)
-Use: validRows (condition), v (condition, increment)
+1. ParamChecks.nullNotPermitted(data, "data");
+- Def: None (method call, no variables defined)
+- Use: data
+2. double total = 0.0;
+- Def: total
+- Use: None
+3. if (total > 0){ total = 100; }
+- Def: total (inside the block)
+- Use: total (condition)
+4. int rowCount = data.getRowCount();
+- Def: rowCount
+- Use: data
+5. for (int v = 0; v < validRows.length; v++) { ... }
+- Def: v (initialization)
+- Use: validRows (condition), v (condition, increment)
 Inside the loop:
-int row = validRows[v];
-Def: row
-Use: validRows, v
-if (row < rowCount) { ... }
-Def: None
-Use: row, rowCount
-Number n = data.getValue(row, column);
-Def: n
-Use: data, row, column
-if (n != null) { total += n.doubleValue(); }
-Def: total
-Use: n, total
+6. int row = validRows[v];
+- Def: row
+- Use: validRows, v
+7. if (row < rowCount) { ... }
+- Def: None
+- Use: row, rowCount
+8. Number n = data.getValue(row, column);
+- Def: n
+- Use: data, row, column
+9. if (n != null) { total += n.doubleValue(); }
+- Def: total
+- Use: n, total
 
-List All DU-Pairs Per Variable
-data: Used in ParamChecks, getRowCount(), getValue()
-total: Defined initially and possibly modified in the loop. Used in if condition and for accumulation.
-rowCount: Defined before the loop, used within the loop condition.
-v: Defined and used in the loop.
-validRows: Used in loop condition and to get row.
-row: Defined in the loop, used to get values.
-n: Defined in the loop, used in the null check.
-Coverage per Test Case
+## List All DU-Pairs Per Variable
+- data: Used in ParamChecks, getRowCount(), getValue()
+- total: Defined initially and possibly modified in the loop. Used in if condition and for accumulation.
+- rowCount: Defined before the loop, used within the loop condition.
+- v: Defined and used in the loop.
+- validRows: Used in loop condition and to get row.
+- row: Defined in the loop, used to get values.
+- n: Defined in the loop, used in the null check.
+## Coverage per Test Case
 Each test case covers:
-The definition and use of data through mock interactions.
-The initialization and conditional modification of total.
-The definition and use of rowCount through data.getRowCount().
-The loop execution, affecting v, validRows, row, and the internal logic based on n.
+- The definition and use of data through mock interactions.
+- The initialization and conditional modification of total.
+- The definition and use of rowCount through data.getRowCount().
+- The loop execution, affecting v, validRows, row, and the internal logic based on n.
 Specific Coverages:
-With Positive Values: Covers the definition and use of all variables due to loop execution and conditions being met for positive value accumulation.
-With Null Input: Directly covers the null check on data.
-With Negative Values, Mixed Values, Zero Values, Large Dataset, No Rows: Each of these tests covers various aspects of the loop and conditionals, specifically the handling of different value types and quantities.
+- With Positive Values: Covers the definition and use of all variables due to loop execution and conditions being met for positive value accumulation.
+- With Null Input: Directly covers the null check on data.
+- With Negative Values, Mixed Values, Zero Values, Large Dataset, No Rows: Each of these tests covers various aspects of the loop and conditionals, specifically the handling of different value types and quantities.
 
 ## Range.contains:
 
