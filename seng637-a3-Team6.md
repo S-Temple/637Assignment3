@@ -71,14 +71,14 @@ Range Totals for intentionally covered methods:
 21/28 branch paths = 75% branch coverage
 12/17 complexity = 70.59% complexity coverage
 
-Figure1: Original Range statement(line) coverage
+
+![Figure1: Original Range statement(line) coverage](media/image3.png)
 
 
-Figure2: Original Range branch Coverage
+![Figure2: Original Range branch Coverage](media/image4.png)
 
 
-Figure 3: Original Range Complexity Coverage
-
+![Figure 3: Original Range Complexity Coverage](media/image1.png)
 
 Junit in combination with EclEmma provided all the information we needed.
 
@@ -116,13 +116,12 @@ DataUtilities Totals for intentionally covered methods:
 	
 
 
-Figure 4: Original Data Utilities Statement (Line) Coverage
 
+![Figure 4: Original Data Utilities Statement (Line) Coverage](media/image8.png)
 
-Figure 5: Original Data Utilities Branch Coverage
+![Figure 5: Original Data Utilities Branch Coverage](media/image5.png)
 
-
-Figure 6: Original Data Utilities Complexity Coverage
+![Figure 6: Original Data Utilities Complexity Coverage](media/image9.png)
 
 DataUtilities.calculateColumnTotal:
 
