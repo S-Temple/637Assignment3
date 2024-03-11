@@ -7,7 +7,9 @@
 | Student Names: |     |
 | Sean Temple    |     |
 | John Chernoff               |     |
-|                |     |
+| Nicholas Langley               |     |
+| Raisa Mehjabin Azni            |   
+| Eric Yoon            |   
 
 (Note that some labs require individual reports while others require one report
 for each group. Please see each lab document for details.)
@@ -22,7 +24,7 @@ This assignment is similar to assignment 2 but with changed expectations and acc
 
 Using EclEmma. Complexity here refers to cyclomatic complexity paths covered.
 
-Range
+## Range
 
 Constructor:
 8/8 lines - 100% statement coverage
@@ -83,7 +85,7 @@ Figure 3: Original Range Complexity Coverage
 
 Junit in combination with EclEmma provided all the information we needed.
 
-DataUtilities
+## DataUtilities
 calculateColumnTotal 
 9/12 Lines= 75% statement Coverage
 5/8  branches = 62.5% branch coverage
@@ -113,10 +115,6 @@ DataUtilities Totals for intentionally covered methods:
 44/53 Instructions = 83.02% Instruction Coverage
 21/32 branch paths = 65.63% branch coverage
 13/21 complexity = 61.90% complexity coverage
-
-	
-
-
 
 ![Figure 4: Original Data Utilities Statement (Line) Coverage](media/image8.png)
 Figure 4: Original Data Utilities Statement (Line) Coverage
@@ -148,7 +146,6 @@ DataUtilities.calculateColumnTotal:
        }
        return total;
    }
-
 
 Data Flow Chart:
 
@@ -204,7 +201,6 @@ With Positive Values: Covers the definition and use of all variables due to loop
 With Null Input: Directly covers the null check on data.
 With Negative Values, Mixed Values, Zero Values, Large Dataset, No Rows: Each of these tests covers various aspects of the loop and conditionals, specifically the handling of different value types and quantities.
 
-
 ## Range.contains:
 
     1 public boolean contains(double value) {
@@ -257,7 +253,6 @@ list all DU-pairs per variable:
 |----------|-------------|-----|-----|
 | value    |1| {1} |{(2,3),(2,4),(3,5),(3,6)}|
 
-
 CU = 1, PU = 4
 
 Test Cases and Covered DU-Pairs:
@@ -270,9 +265,7 @@ TC3:lower<value<upper
 
 Other infeasible as it is impossible to have Range with lower > upper. Making line 8 the same as: return true; 
 Good defensive programming to write line 8 the way it is though.
-
 As such it's impossible to improve coverage.
-
 
 # 3 A detailed description of the testing strategy for the new unit test
 
@@ -280,9 +273,7 @@ For the two classes we are testing, and each of the methods within, the general 
 
 Where the coverage is initially incomplete or missed, the test code is manually inspected to see where the deficiency can be addressed. After implementing the change the coverage test is re-run to see if the deficiency is solved or not. This iterative process is conducted for each type of coverage until the minimum values of 90% for statements, 70% for branches, and 60% for conditions. 
 
-
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
-
 
 For Range we had no new test cases designed as the testing from the last assignment covered all code that is possible to reach. The only parts not covered are inaccessible code that although should never be run is good defensive programming. The details for each method will be covered in later sections.
 
@@ -290,7 +281,6 @@ For DataUtilities a few updates were made:
 getCumalitivePercentages had to be updated to include test cases for infinite, NaN, and null values. By adding in these test cases the instruction (statement) coverage was increased as some instructions were missed before.
 createNumberArray and createNumberArray2D were updated with new test cases for infinity and NaN values to catch missing branches.
 calculateColumnTotal and calculateRowTotal were updated with new test cases for infinity values to catch missing branches and instructions.
-
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
