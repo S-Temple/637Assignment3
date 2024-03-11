@@ -11,8 +11,6 @@
 | Raisa Mehjabin Azni            |   
 | Eric Yoon            |   
 
-(Note that some labs require individual reports while others require one report
-for each group. Please see each lab document for details.)
 
 # 1 Introduction
 
@@ -20,7 +18,8 @@ This assignment is similar to assignment 2 but with changed expectations and acc
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
-Using EclEmma. Complexity here refers to cyclomatic complexity paths covered.
+Using EclEmma for reports.
+Complexity here refers to cyclomatic complexity paths covered.
 
 ## Range
 
@@ -317,7 +316,7 @@ Where the coverage is initially incomplete or missed, the test code is manually 
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
-For Range we had no new test cases designed as the testing from the last assignment covered all code that is possible to reach. The only parts not covered are inaccessible code that although should never be run is good defensive programming. The details for each method will be covered in later sections.  
+For Range we had one new test case designed as the testing from the last assignment covered almost all code that is possible to reach.The new test case is for the method equals and it passes a non Range object for comparision which covers some addional code not caught by assignment 2 testing. The only parts left not covered are inaccessible code that although should never be run but is good defensive programming. The details for each method will be covered in later sections.  
 
 **For DataUtilities a few updates were made:**
 1. getCumalitivePercentages had to be updated to include test cases for infinite, NaN, and null values. By adding in these test cases the instruction (statement) coverage was increased as some instructions were missed before.
@@ -327,7 +326,7 @@ For Range we had no new test cases designed as the testing from the last assignm
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
 ## Range
-changes inculde adding actual intentional tests for contains with no added coverage. The equals method now has a test for non range objects that brings its coverage up to 100%. We will explain in deatil later why its impossible to add tests to increase coverage for most of the methods without changeing the source code and after how one would change the source code to get 100% coverage.
+changes inculde adding actual intentional tests for contains method with no added coverage. The equals method now has a test for non range objects that brings its coverage up to 100%. We will explain in detail later why its impossible to add tests to increase coverage for most of the other methods without changeing the source code and after how one would change the source code to get 100% coverage.
 	
 Equals:
 
@@ -371,7 +370,7 @@ The last 7.1% is from the final return statement only ever being evaluated to tr
 
 45% of getUpperBound and getLowerBound
 
-All three of these methods have the same inaccessable code for the same reason as the contains method:
+All three of these methods have the same inaccessable code issue for the same reason as the contains method:
 
     if (lower > upper) {
         String msg = "Range(double, double): require lower (" + lower + ") <= upper (" + upper + ").";
