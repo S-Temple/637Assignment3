@@ -84,10 +84,11 @@ Figure 3: Original Range Complexity Coverage
 Junit in combination with EclEmma provided all the information we needed.
 
 ## DataUtilities
-calculateColumnTotal 
-9/12 Lines= 75% statement Coverage
-5/8  branches = 62.5% branch coverage
-3/5 complexity - 60% complexity coverage
+**calculateColumnTotal**
+  - **Lines:** 9/12 Lines = 75% statement Coverage 
+  - **Branches:** 5/8 branches = 62.5% branch coverage 
+  - **Complexity:** 3/5 complexity = 60% complexity coverage
+
 
 calculateRowTotal
 	9/12 Lines= 75% Instruction Coverage
