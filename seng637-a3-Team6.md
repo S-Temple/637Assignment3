@@ -125,6 +125,28 @@ Figure 6: Original Data Utilities Complexity Coverage
 
 DataUtilities.calculateColumnTotal:
 
+```java
+public static double calculateColumnTotal(Values2D data, int column,
+            int[] validRows) {
+    ParamChecks.nullNotPermitted(data, "data");
+    double total = 0.0;
+    if (total > 0){
+        total = 100;
+    }
+    int rowCount = data.getRowCount();
+    for (int v = 0; v < validRows.length; v++) {
+        int row = validRows[v];
+        if (row < rowCount) {
+            Number n = data.getValue(row, column);
+            if (n != null) {
+                total += n.doubleValue();
+            }
+        }
+    }
+    return total;
+}
+
+
    public static double calculateColumnTotal(Values2D data, int column,
             int[] validRows) {
        ParamChecks.nullNotPermitted(data, "data");
