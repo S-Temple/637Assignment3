@@ -302,12 +302,12 @@ Where the coverage is initially incomplete or missed, the test code is manually 
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
-For Range we had no new test cases designed as the testing from the last assignment covered all code that is possible to reach. The only parts not covered are inaccessible code that although should never be run is good defensive programming. The details for each method will be covered in later sections.
+For Range we had no new test cases designed as the testing from the last assignment covered all code that is possible to reach. The only parts not covered are inaccessible code that although should never be run is good defensive programming. The details for each method will be covered in later sections.  
 
-For DataUtilities a few updates were made:
-getCumalitivePercentages had to be updated to include test cases for infinite, NaN, and null values. By adding in these test cases the instruction (statement) coverage was increased as some instructions were missed before.
-createNumberArray and createNumberArray2D were updated with new test cases for infinity and NaN values to catch missing branches.
-calculateColumnTotal and calculateRowTotal were updated with new test cases for infinity values to catch missing branches and instructions.
+**For DataUtilities a few updates were made:**
+1. getCumalitivePercentages had to be updated to include test cases for infinite, NaN, and null values. By adding in these test cases the instruction (statement) coverage was increased as some instructions were missed before.
+2. createNumberArray and createNumberArray2D were updated with new test cases for infinity and NaN values to catch missing branches.
+3. calculateColumnTotal and calculateRowTotal were updated with new test cases for infinity values to catch missing branches and instructions.
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
