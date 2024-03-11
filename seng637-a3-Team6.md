@@ -20,8 +20,6 @@ This assignment is similar to assignment 2 but with changed expectations and acc
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
-## DataUtilities.calculateColumnTotal:
-
 Using EclEmma. Complexity here refers to cyclomatic complexity paths covered.
 
 ## Range
@@ -72,7 +70,6 @@ Range Totals for intentionally covered methods:
 30/40 Instructions = 75% Instruction Coverage
 21/28 branch paths = 75% branch coverage
 12/17 complexity = 70.59% complexity coverage
-
 
 ![Figure1: Original Range statement(line) coverage](media/image3.png)
 Figure1: Original Range statement(line) coverage
