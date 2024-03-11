@@ -149,7 +149,7 @@ public static double calculateColumnTotal(Values2D data, int column,
 
 ## Data Flow Chart:
 
-![DFC](media/dfg_data.png)
+![DFC](media/dfg.png)
 
 ## Def-use sets per statement:
 
