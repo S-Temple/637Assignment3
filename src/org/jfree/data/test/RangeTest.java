@@ -272,6 +272,11 @@ public class RangeTest {
         assertFalse("equals method fails with Range(-1.0, 5.0) and Range(-1.0, 600.0)",range1.equals(range2));  
     }
     
+    @Test
+    public void testEquals_WithNonRangeObj() {
+        Range range1 = new Range(-1.0, 5.0);
+        assertFalse("equals method fails with Range(-1.0, 5.0) and double",range1.equals(5.5));  
+    }
     
     
     /*

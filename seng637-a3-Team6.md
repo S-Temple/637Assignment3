@@ -102,10 +102,10 @@ Text…
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
 
-![Line Coverage](/media/RangeLineCoverage.png)
-
 ### Instruction Coverage
-![Instruction coverage](/media/RangeInstrucitonCoverage.png)
+![Instruction coverage](/media/RangeInstrucitonCoverageAfter.png)
+As shown above the equals method now has 100% coverage now that the test for when it is passed a non range object.
+
 Details of the tested methods with less than 100% coverage:
 
 92.9% coverage of contains method:
@@ -126,7 +126,7 @@ The last 7.1% is from the last return statement only ever being evaluated to tru
 
 45% of getUpperBound and getLowerBound
 
-all three of these methods have the same inacessable code for the same reason as the contains method:
+All three of these methods have the same inaccessable code for the same reason as the contains method:
 
     if (lower > upper) {
         String msg = "Range(double, double): require lower (" + lower + ") <= upper (" + upper + ").";
@@ -135,7 +135,68 @@ all three of these methods have the same inacessable code for the same reason as
 
 In summary the only reason the tests don't have 100% coverage is because the constructor prevents lower > upper and there is no way to access the private members to create such conditions without editing values in memory or some other kind of memory corruption.
 
-![Branch Coverage](/media/RangeBranchCoverage.png)
+### Branch Coverage
+![Branch Coverage](/media/RangeBranchCoverageAfter.png)
+
+Same as instruction coverage the get methods for upper lower and length have the same issue where the code inside if (lower > upper) will never be ran.
+
+The contains method has simlar issue to before where this method has branchs that will never run due to how the method is written.
+original:
+
+    public boolean contains(double value) {
+        if (value < this.lower) {
+            return false;
+        }
+        if (value  > this.upper) {
+            return false;
+        }
+        return (value >= this.lower && value <= this.upper);
+    }
+
+Written so it works, has less code, less branches, and all code can be ran:
+
+    public boolean contains(double value) {
+        return (value >= this.lower && value <= this.upper);
+    }
+
+constrain although every line is ran has a else if statment that will never run as the if(!contains(value)) statment will prevent any value within the range from being evaluated at the else if (value < this.lower) making it always evaluate to true.
+
+    public double constrain(double value) {
+        double result = value;
+        if (!contains(value)) {
+            if (value > this.upper) {
+                result = this.upper;
+            }
+            else if (value < this.lower) {
+                result = this.lower;
+            }
+        }
+        return result;
+    }
+
+Cleaner code that will allow all branches and intructions to be covered:
+
+    public double constrain(double value) {
+        double result = value;
+        if (!contains(value)) {
+            if (value > this.upper) {
+                result = this.upper;
+            }
+            else {
+                result = this.lower;
+            }
+        }
+        return result;
+    }
+
+### Cyclomatic Complexity Coverage
+![Complexity Coverage after fixes](/media/CyclomaticComplexityAfter.png)
+
+For all the same reasons as before the get methods for upper, lower and length only have 50% coverage with no way to improve without just removing the bound checking in the source code.
+
+equals method now has 100% coverage due to the test using non Range object. 
+
+Constrain and contains have less than 100% coverage for the same reasons as before. Without altering the source code as shown in the branch coverage section it is impossible to increase the coverage.
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
