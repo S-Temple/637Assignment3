@@ -220,17 +220,49 @@ c use = {total}
 
 | Variable | Defined in node | DCU (v, n) | DPU (v, n) |
 |----------|-------------|-----|-----|
-| data    |start| {2, 3, 5, 10} |{}|
+| data    |start| {1, 3, 5, 10} |{}|
 | column    |start| {5, 10} |{}|
 | total   |2| {7, 12, end} |{}|
 | rowCount    |3| {} |{(4,5),(4,9),(8,4),(8,9),(9,10),(9,end),(13,9),(13,end)}|
-| r |4| {5. 8} |{(8,4),(8,9)}|
+| r |4| {5. 8} |{(4,5), (4,9), (8,4),(8,9)}|
 | n (1)    |5| {7} |{(6,7),(6,8)}|
 | r2    |9| {10, 13} |{(13,9),(13,end)}|
 | n (2)    |10| {12} |{}|
 
 
 ## Coverage per Test Case
+calculateColumnTotal_WithPositiveValues - most tests cases have this same coverage
+ - Data
+   - Covers all DCU pairs - {1, 3, 5, 10}
+- column
+   - Covers all DCU pairs - {5, 10}
+- Total
+   - Covers 2 / 3 DCU pairs (one is inaccessable with current code) - {7, end}
+- RowCount
+   - Covers all accessible Dpu pairs except for (4,9)(when data has no rows)- {(4,5), (8,4), (8,9), (9,end)}
+- r
+   - Coversall Dcu pairs - {5, 8}
+   - Covers 3 / 4 DpuPairs - {(4,5),(8,4), (8,9)} - (missing pair requires a data input with no rows)
+- n
+   - Covers all Dcu pairs {5, 8}
+   - Cover 1/2 Dpu pairs (where n != null) - {(6,7)}
+- r2
+   - Covers the only accesible Dcu pair ({10})
+   - Covers the only accesible Dpu pair ({(13, end)})
+
+
+calculateColumnTotal_WithNullValue
+   	Same as first test case in section EXCEPT
+    	also covers the last Dpu pair for the n variable (when n is null) - {(6,8)}
+
+
+calculateColumnTotal_WithNoRows
+  	Covers the last accessible rowCount and r Dpu pairs - {(4,9)} for both
+
+The other column total test all have identical coverage to the first test case in this section
+All accessible Dcu and Dpu pairs are covered, the rest are locked behind a condition that can't be met
+   
+
 Each test case covers:
 - The definition and use of data through mock interactions.
 - The initialization and conditional modification of total.
