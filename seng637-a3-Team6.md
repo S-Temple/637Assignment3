@@ -6,7 +6,7 @@
 | -------------- | --- |
 | Student Names: |     |
 | Sean Temple    |     |
-|                |     |
+| John Chernoff               |     |
 |                |     |
 
 (Note that some labs require individual reports while others require one report
@@ -273,13 +273,71 @@ As such it's impossible to improve coverage.
 
 # 3 A detailed description of the testing strategy for the new unit test
 
-Text…
+For the two classes we are testing, and each of the methods within, the general strategy is to run a coverage test and review it line by line. The coverage tests will be reviewed by all group members and the tests will be developed to improve coverage by all group members in coordination. Once the initial coverage test is run, each of the coverage areas which are instruction, branch and complexity will be reviewed for each method of each class. 
+
+Where the coverage is initially incomplete or missed, the test code is manually inspected to see where the deficiency can be addressed. After implementing the change the coverage test is re-run to see if the deficiency is solved or not. This iterative process is conducted for each type of coverage until the minimum values of 90% for statements, 70% for branches, and 60% for conditions. 
+
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
-Text…
+
+For Range we had no new test cases designed as the testing from the last assignment covered all code that is possible to reach. The only parts not covered are inaccessible code that although should never be run is good defensive programming. The details for each method will be covered in later sections.
+
+For DataUtilities a few updates were made:
+getCumalitivePercentages had to be updated to include test cases for infinite, NaN, and null values. By adding in these test cases the instruction (statement) coverage was increased as some instructions were missed before.
+createNumberArray and createNumberArray2D were updated with new test cases for infinity and NaN values to catch missing branches.
+calculateColumnTotal and calculateRowTotal were updated with new test cases for infinity values to catch missing branches and instructions.
+
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
+
+Range
+Added actual tests for contains. This results in no change to coverage amount as all actually reachable branch results were already covered. The coverage is actually intended now though
+5/5 instructions -> 5/5 instructions (no change) - 100% statement
+6/8 branches -> 6/8 branches (no change) - 75% branch coverage
+3/5 complexity - 60% complex (no change) - 60% complexity
+
+Range Totals remain at:
+35/45 Instructions = 77.77% Instruction Coverage
+27/36 branch paths = 75% branch coverage
+15/22 complexity = 68.18% complexity coverage
+
+Range Line coverage
+
+Range Branch Coverage
+
+
+Range complexity coverage
+
+
+
+DataUtilities
+Added two tests for getCumulativePercentages:
+One including infinity/NaN values
+One including null values
+
+Other covered methods only had statements/branches that could not actually be reached so coverage could not be increased.
+
+getCumulativePercentages:
+15/18 -> 15/18 Lines (No change) - 83.3% Instruction Coverage
+7/12 -> 9/12 branches - 75% branch coverage (+16.67%)
+3/7 -> 5/7 complexity - 71.43% complexity coverage (+28.57%)
+
+
+DataUtilities Totals for intentionally covered methods:
+44/53 Instructions = 83.02% Instruction Coverage (No change)
+23/32 branch paths = 71.88% branch coverage (+6.25%)
+15/21 complexity = 71.43% complexity coverage (+9.53%)
+
+
+
+Data Utilities statement coverage
+
+
+Data Utilities branch coverage
+
+
+Data Utilities complexity coverage
 
 
 ![Line Coverage](/media/RangeLineCoverage.png)
