@@ -678,6 +678,34 @@ public class DataUtilitiesTest {
         assertTrue(Double.isNaN(result.getValue("B").doubleValue()));
         assertTrue(Double.isNaN(result.getValue("C").doubleValue())); // Expecting NaN for invalid calculations
     }
+
+    @Test
+    public void getCumulativePercentages_WithNullValues() {
+        final KeyedValues values = mockingContext.mock(KeyedValues.class);
+
+        mockingContext.checking(new Expectations() {{
+            allowing(values).getItemCount();
+            will(returnValue(3));
+            allowing(values).getKey(0);
+            will(returnValue("A"));
+            allowing(values).getValue(0);
+            will(returnValue(1));
+            allowing(values).getKey(1);
+            will(returnValue("B"));
+            allowing(values).getValue(1);
+            will(returnValue(null));
+            allowing(values).getKey(2);
+            will(returnValue("C"));
+            allowing(values).getValue(2);
+            will(returnValue(1));
+        }});
+
+        KeyedValues result = DataUtilities.getCumulativePercentages(values);
+        assertNotNull(result);
+        assertEquals(0.5, result.getValue("A").doubleValue(), 0.000000001d);
+        assertEquals(0.5, result.getValue("B").doubleValue(), 0.000000001d);
+        assertEquals(1.0, result.getValue("C").doubleValue(), 0.000000001d);
+    }
     
     @After
     public void tearDown() throws Exception {
