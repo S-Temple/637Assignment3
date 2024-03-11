@@ -305,30 +305,30 @@ For Range we had no new test cases designed as the testing from the last assignm
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
-Range
+**Range**
 Added actual tests for contains. This results in no change to coverage amount as all actually reachable branch results were already covered. The coverage is actually intended now though
-5/5 instructions -> 5/5 instructions (no change) - 100% statement
-6/8 branches -> 6/8 branches (no change) - 75% branch coverage
-3/5 complexity - 60% complex (no change) - 60% complexity
+- 5/5 instructions -> 5/5 instructions (no change) - 100% statement
+- 6/8 branches -> 6/8 branches (no change) - 75% branch coverage
+- 3/5 complexity - 60% complex (no change) - 60% complexity
 
-Range Totals remain at:
-35/45 Instructions = 77.77% Instruction Coverage
-27/36 branch paths = 75% branch coverage
-15/22 complexity = 68.18% complexity coverage
+**Range Totals remain at:**
+- 35/45 Instructions = 77.77% Instruction Coverage
+- 27/36 branch paths = 75% branch coverage
+- 15/22 complexity = 68.18% complexity coverage
 
 ![RLC](media/image12.png)
-Range Line coverage
+**Range Line coverage**
 
 ![RBC](media/image4.png)
-Range Branch Coverage
+**Range Branch Coverage**
 
 ![RCC](media/image1.png)
-Range complexity coverage
+**Range complexity coverage**
 
-DataUtilities
+### DataUtilities
 Added two tests for getCumulativePercentages:
-One including infinity/NaN values
-One including null values
+- One including infinity/NaN values
+- One including null values
 
 Other covered methods only had statements/branches that could not actually be reached so coverage could not be increased.
 
