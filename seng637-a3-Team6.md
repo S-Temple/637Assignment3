@@ -167,26 +167,37 @@ Use: None
 Def: total (inside the block)
   
 Use: total (condition)
-  
-4. int rowCount = data.getRowCount();
-- Def: rowCount
-- Use: data
-5. for (int v = 0; v < validRows.length; v++) { ... }
-- Def: v (initialization)
-- Use: validRows (condition), v (condition, increment)
+4. int rowCount = data.getRowCount();  
+
+Def: rowCount
+
+Use: data
+5. for (int v = 0; v < validRows.length; v++) { ... }  
+
+Def: v (initialization)
+
+Use: validRows (condition), v (condition, increment)
 Inside the loop:
-6. int row = validRows[v];
-- Def: row
-- Use: validRows, v
-7. if (row < rowCount) { ... }
-- Def: None
-- Use: row, rowCount
-8. Number n = data.getValue(row, column);
-- Def: n
-- Use: data, row, column
-9. if (n != null) { total += n.doubleValue(); }
-- Def: total
-- Use: n, total
+6. int row = validRows[v];  
+
+Def: row
+ 
+Use: validRows, v
+7. if (row < rowCount) { ... }  
+
+Def: None
+ 
+Use: row, rowCount
+8. Number n = data.getValue(row, column);  
+
+Def: n
+
+Use: data, row, column
+9. if (n != null) { total += n.doubleValue(); }  
+
+Def: total
+
+Use: n, total
 
 ## List All DU-Pairs Per Variable
 - data: Used in ParamChecks, getRowCount(), getValue()
