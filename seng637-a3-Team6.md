@@ -88,7 +88,7 @@ Junit in combination with EclEmma provided all the information we needed.
   - 9/12 Lines = 75% statement Coverage 
   - 5/8 Branches = 62.5% branch coverage 
   - 3/5 Complexity = 60% complexity coverage
-  - 
+    
 **calculateRowTotal**
 - 9/12 Lines = 75% Instruction Coverage
 - 5/8 Branches = 62.5% branch coverage
