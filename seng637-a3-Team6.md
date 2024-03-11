@@ -124,15 +124,15 @@ Junit in combination with EclEmma provided all the information we needed.
 - 44/53 Instructions = 83.02% Instruction Coverage
 - 21/32 Branch paths = 65.63% branch coverage
 - 13/21 Complexity = 61.90% complexity coverage
-
+- 
+Original Data Utilities Statement (Line) Coverage
 ![Figure 4: Original Data Utilities Statement (Line) Coverage](media/image8.png)
-Figure 4: Original Data Utilities Statement (Line) Coverage
 
-![Figure 5: Original Data Utilities Branch Coverage](media/image5.png)
 Figure 5: Original Data Utilities Branch Coverage
+![Figure 5: Original Data Utilities Branch Coverage](media/image5.png)
 
-![Figure 6: Original Data Utilities Complexity Coverage](media/image9.png)
 Figure 6: Original Data Utilities Complexity Coverage
+![Figure 6: Original Data Utilities Complexity Coverage](media/image9.png)
 
 DataUtilities.calculateColumnTotal:
 
@@ -250,18 +250,15 @@ calculateColumnTotal_WithPositiveValues - most tests cases have this same covera
    - Covers the only accesible Dcu pair ({10})
    - Covers the only accesible Dpu pair ({(13, end)})
 
-
 calculateColumnTotal_WithNullValue
    	Same as first test case in section EXCEPT
     	also covers the last Dpu pair for the n variable (when n is null) - {(6,8)}
-
 
 calculateColumnTotal_WithNoRows
   	Covers the last accessible rowCount and r Dpu pairs - {(4,9)} for both
 
 The other column total test all have identical coverage to the first test case in this section
 All accessible Dcu and Dpu pairs are covered, the rest are locked behind a condition that can't be met
-   
 
 Each test case covers:
 - The definition and use of data through mock interactions.
@@ -492,15 +489,14 @@ DataUtilities Totals for intentionally covered methods:
 23/32 branch paths = 71.88% branch coverage (+6.25%)
 15/21 complexity = 71.43% complexity coverage (+9.53%)
 
-![RLC](media/image8.png)
 Data Utilities statement coverage
+![RLC](media/image8.png)
 
-![DUBC](media/image7.png)
 Data Utilities branch coverage
+![DUBC](media/image7.png)
 
-![DUCC](media/image6.png)
 Data Utilities complexity coverage
-
+![DUCC](media/image6.png)
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
