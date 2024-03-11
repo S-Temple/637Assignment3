@@ -37,40 +37,40 @@ getLowerBound:
 - 1/2 complexity - 50% complexity coverage
 	
 getUpperBound:
-2/5 Lines- 40% statement coverage
-1/2 branches - 50% branch coverage
-1/2 complexity - 50% complexity coverage
+- 2/5 Lines- 40% statement coverage
+- 1/2 branches - 50% branch coverage
+- 1/2 complexity - 50% complexity coverage
 
 getLength:
-2/5 Lines- 40% statement coverage
-1/2  branches - 50% branch coverage
-1/2 complexity - 50% complexity coverage
+- 2/5 Lines- 40% statement coverage
+- 1/2  branches - 50% branch coverage
+- 1/2 complexity - 50% complexity coverage
 
 getCentralValue:
-1/1 line- 100% statement coverage
-No branches to cover - 100% branch coverage
-1/1 complexity - 100% complexity coverage
+- 1/1 line- 100% statement coverage
+- No branches to cover - 100% branch coverage
+- 1/1 complexity - 100% complexity coverage
 
 Contains:
-5/5 Lines- 100% statement coverage
-6/8 branches, - 75% branch coverage
-3/5 complexity - 60% complexity coverage
+- 5/5 Lines- 100% statement coverage
+- 6/8 branches, - 75% branch coverage
+- 3/5 complexity - 60% complexity coverage
 
 Constrain:
-8/8 Lines- 100% statement coverage
-5/6 branches - 83.33% branch coverage 
-another weird case will have to look into.
-3/4 complexity - 75% complexity coverage
+- 8/8 Lines- 100% statement coverage
+- 5/6 branches - 83.33% branch coverage 
+- **another weird case will have to look into.**
+- 3/4 complexity - 75% complexity coverage
 	
 Equals:
-7/8 Lines- 87.5% statement coverage
-5/6  branches - 83.33% branch coverage
-3/4 complexity - 75% complexity coverage
+- 7/8 Lines- 87.5% statement coverage
+- 5/6  branches - 83.33% branch coverage
+- 3/4 complexity - 75% complexity coverage
 
 Range Totals for intentionally covered methods:
-30/40 Instructions = 75% Instruction Coverage
-21/28 branch paths = 75% branch coverage
-12/17 complexity = 70.59% complexity coverage
+- 30/40 Instructions = 75% Instruction Coverage
+- 21/28 branch paths = 75% branch coverage
+- 12/17 complexity = 70.59% complexity coverage
 
 ![Figure1: Original Range statement(line) coverage](media/image3.png)
 Figure1: Original Range statement(line) coverage
