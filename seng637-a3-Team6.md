@@ -124,14 +124,14 @@ Junit in combination with EclEmma provided all the information we needed.
 - 44/53 Instructions = 83.02% Instruction Coverage
 - 21/32 Branch paths = 65.63% branch coverage
 - 13/21 Complexity = 61.90% complexity coverage
-- 
+  
 Original Data Utilities Statement (Line) Coverage
 ![Figure 4: Original Data Utilities Statement (Line) Coverage](media/image8.png)
 
-Figure 5: Original Data Utilities Branch Coverage
+Original Data Utilities Branch Coverage
 ![Figure 5: Original Data Utilities Branch Coverage](media/image5.png)
 
-Figure 6: Original Data Utilities Complexity Coverage
+Original Data Utilities Complexity Coverage
 ![Figure 6: Original Data Utilities Complexity Coverage](media/image9.png)
 
 DataUtilities.calculateColumnTotal:
@@ -158,7 +158,7 @@ public static double calculateColumnTotal(Values2D data, int column,
 }
 ```
 
-## Data Flow Chart:
+## Data Flow Graph:
 
 ![DFC](media/dfg.png)
 
@@ -283,11 +283,11 @@ Specific Coverages:
     9 }
 ```
 
-### Data Flow Graph:
+## Data Flow Graph:
 
 ![DFG](media/RangeDataFlowDiagram.png)
 
-### def-use sets per statement/line:
+## Def-use sets per statement:
 
 line: statement
 
@@ -317,7 +317,7 @@ line: statement
     Def: None
     Use: value, this.lower
 
-list all DU-pairs per variable:
+## List All DU-Pairs Per Variable
 
 | Variable | Def in node | DCU | DPU |
 |----------|-------------|-----|-----|
@@ -325,7 +325,7 @@ list all DU-pairs per variable:
 
 CU = 1, PU = 4
 
-Test Cases and Covered DU-Pairs:
+## Coverage per Test Case
 
 TC1:value<lower
 
