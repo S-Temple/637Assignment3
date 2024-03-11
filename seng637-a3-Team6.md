@@ -149,73 +149,67 @@ public static double calculateColumnTotal(Values2D data, int column,
 
 ## Data Flow Chart:
 
-![DFC](media/image2.png)
+![DFC](media/dfg_data.png)
 
 ## Def-use sets per statement:
-1. ParamChecks.nullNotPermitted(data, "data");
-   
-Def: None (method call, no variables defined)  
 
-Use: data  
+start/method called: calculateColumnTotal(Values2D data, int column)
+def = {data, column}
+1: ParamChecks.nullNotPermitted(data, "data");
+c use = {data}
 
-2. double total = 0.0;  
+2: double total = 0.0;
+def = {total}
 
-Def: total
-  
-Use: None  
+3: int rowCount = data.getRowCount();
+def = {rowCount}
+   	c use = {data}
 
-3. if (total > 0){ total = 100; }  
+4: for (int r = 0; r < rowCount; r++) {
+def = {r}
+    	p use = {rowCount}
 
-Def: total (inside the block)
-  
-Use: total (condition)  
+5: Number n = data.getValue(r, column);
+def = {n}
+ 	   c use = {data, r, column}
 
-4. int rowCount = data.getRowCount();  
+6:  if (n != null) {
+p use = {n}
 
-Def: rowCount
+7: total += n.doubleValue();
+c use = {total, n}
 
-Use: data  
+8: end of for loop
+ c use = {r}
+    	 p use = {r, rowCount}
 
-5. for (int v = 0; v < validRows.length; v++) { ... }  
+9: for (int r2 = 0; r2 > rowCount; r2++) {
+def = {r2}
+    	p use = {rowCount}
 
-Def: v (initialization)
+10: Number n = data.getValue(r2, column);
+def = {n}
+      	c use = {data, r2, column}
 
-Use: validRows (condition), v (condition, increment)  
+11: if (n != null) {
+p use = {n}
 
-Inside the loop:  
+12: total += n.doubleValue();
+c use = {total, n}
 
-6. int row = validRows[v];  
+13: end of for loop 
+c use = {r2}
+      p use = {r, rowCount}
 
-Def: row
- 
-Use: validRows, v  
-
-7. if (row < rowCount) { ... }  
-
-Def: None
- 
-Use: row, rowCount  
-
-8. Number n = data.getValue(row, column);  
-
-Def: n
-
-Use: data, row, column  
-
-9. if (n != null) { total += n.doubleValue(); }  
-
-Def: total
-
-Use: n, total
+end/return: return total;
+c use = {total}
 
 ## List All DU-Pairs Per Variable
-- data: Used in ParamChecks, getRowCount(), getValue()
-- total: Defined initially and possibly modified in the loop. Used in if condition and for accumulation.
-- rowCount: Defined before the loop, used within the loop condition.
-- v: Defined and used in the loop.
-- validRows: Used in loop condition and to get row.
-- row: Defined in the loop, used to get values.
-- n: Defined in the loop, used in the null check.
+
+| Variable | Defined in node | DCU (v, n) | DPU (v, n) |
+|----------|-------------|-----|-----|
+| value    |1| {1} |{(2,3),(2,4),(3,5),(3,6)}|
+
 ## Coverage per Test Case
 Each test case covers:
 - The definition and use of data through mock interactions.
