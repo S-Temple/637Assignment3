@@ -145,7 +145,7 @@ public static double calculateColumnTotal(Values2D data, int column,
     }
     return total;
 }
-
+```
 
    public static double calculateColumnTotal(Values2D data, int column,
             int[] validRows) {
