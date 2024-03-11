@@ -202,7 +202,7 @@ Specific Coverages:
 - With Negative Values, Mixed Values, Zero Values, Large Dataset, No Rows: Each of these tests covers various aspects of the loop and conditionals, specifically the handling of different value types and quantities.
 
 ## Range.contains:
-
+```java
     1 public boolean contains(double value) {
     2       if (value < this.lower) {
     3           return false;
@@ -212,6 +212,7 @@ Specific Coverages:
     7       }
     8       return (value >= this.lower && value <= this.upper);
     9 }
+```
 
 ### Data Flow Graph:
 
