@@ -14,12 +14,192 @@ for each group. Please see each lab document for details.)
 
 # 1 Introduction
 
-Text…
+	This assignment is similar to assignment 2 but with changed expectations and access to the source code allowing white box testing. After copying the tests from assignment 2 to the new codebase we tested for code coverage metrics before and after attempting to increase our code coverage. For one method from DataUtilities and one from Range we manually analyzed each generating data flow graphs and def-use information to determine what tests would be required for full coverage. Using mainly EclEmma we gathered reports on testing coverage for all tested methods in each class.
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
 ## DataUtilities.calculateColumnTotal:
 
+Using EclEmma. Complexity here refers to cyclomatic complexity paths covered.
+
+Range
+
+Constructor:
+8/8 lines - 100% statement coverage
+2/2 branches - 100% branch coverage
+2/2 complexity - 100% complexity coverage
+
+Note both upper/lower/length methods use bound checks that lower is not > upper. We tried to create conditions to run that code and see no way to update or change lower/upper without memory editing. None of the other methods edit upper or lower; they just instantiate a new Range so with the constructor stopping any lower > upper its impossible to create such conditions.
+getLowerBound:
+2/5 Lines- 40% statement coverage
+1/2  branches - 50% branch coverage
+1/2 complexity - 50% complexity coverage
+	
+getUpperBound:
+2/5 Lines- 40% statement coverage
+1/2 branches - 50% branch coverage
+1/2 complexity - 50% complexity coverage
+
+getLength:
+2/5 Lines- 40% statement coverage
+1/2  branches - 50% branch coverage
+1/2 complexity - 50% complexity coverage
+
+getCentralValue:
+1/1 line- 100% statement coverage
+No branches to cover - 100% branch coverage
+1/1 complexity - 100% complexity coverage
+
+Contains:
+5/5 Lines- 100% statement coverage
+6/8 branches, - 75% branch coverage
+3/5 complexity - 60% complexity coverage
+
+Constrain:
+8/8 Lines- 100% statement coverage
+5/6 branches - 83.33% branch coverage 
+another weird case will have to look into.
+3/4 complexity - 75% complexity coverage
+	
+Equals:
+7/8 Lines- 87.5% statement coverage
+5/6  branches - 83.33% branch coverage
+3/4 complexity - 75% complexity coverage
+
+Range Totals for intentionally covered methods:
+30/40 Instructions = 75% Instruction Coverage
+21/28 branch paths = 75% branch coverage
+12/17 complexity = 70.59% complexity coverage
+
+Figure1: Original Range statement(line) coverage
+
+
+Figure2: Original Range branch Coverage
+
+
+Figure 3: Original Range Complexity Coverage
+
+
+Junit in combination with EclEmma provided all the information we needed.
+
+DataUtilities
+calculateColumnTotal 
+9/12 Lines= 75% statement Coverage
+5/8  branches = 62.5% branch coverage
+3/5 complexity - 60% complexity coverage
+
+calculateRowTotal
+	9/12 Lines= 75% Instruction Coverage
+	5/8  branches = 62.5% branch coverage
+	3/5 complexity - 60% complexity coverage
+
+getCumulativePercentages
+	15/18 Lines= 83.3% Instruction Coverage
+	7/12 branches = 58.3% branch coverage
+	3/7 complexity - 42.9% complexity coverage
+
+createNumberArray
+	5/5 Lines= 100% Instruction Coverage
+	2/2 branches fully covered = 100% branch coverage
+	2/2 complexity - 100% complexity coverage
+
+createNumberArray2D
+	6/6 Lines= 100% Instruction Coverage
+2/2 branches fully covered = 100% branch coverage
+2/2 complexity - 100% complexity coverage
+
+DataUtilities Totals for intentionally covered methods:
+44/53 Instructions = 83.02% Instruction Coverage
+21/32 branch paths = 65.63% branch coverage
+13/21 complexity = 61.90% complexity coverage
+
+	
+
+
+Figure 4: Original Data Utilities Statement (Line) Coverage
+
+
+Figure 5: Original Data Utilities Branch Coverage
+
+
+Figure 6: Original Data Utilities Complexity Coverage
+
+DataUtilities.calculateColumnTotal:
+
+   public static double calculateColumnTotal(Values2D data, int column,
+            int[] validRows) {
+       ParamChecks.nullNotPermitted(data, "data");
+       double total = 0.0;
+       if (total > 0){
+           total = 100;
+       }
+       int rowCount = data.getRowCount();
+       for (int v = 0; v < validRows.length; v++) {
+           int row = validRows[v];
+           if (row < rowCount) {
+               Number n = data.getValue(row, column);
+               if (n != null) {
+                   total += n.doubleValue();
+               }
+           }
+       }
+       return total;
+   }
+
+
+Data Flow Chart:
+
+
+
+Def-use sets per statement:
+
+ParamChecks.nullNotPermitted(data, "data");
+Def: None (method call, no variables defined)
+Use: data
+double total = 0.0;
+Def: total
+Use: None
+if (total > 0){ total = 100; }
+Def: total (inside the block)
+Use: total (condition)
+int rowCount = data.getRowCount();
+Def: rowCount
+Use: data
+for (int v = 0; v < validRows.length; v++) { ... }
+Def: v (initialization)
+Use: validRows (condition), v (condition, increment)
+Inside the loop:
+int row = validRows[v];
+Def: row
+Use: validRows, v
+if (row < rowCount) { ... }
+Def: None
+Use: row, rowCount
+Number n = data.getValue(row, column);
+Def: n
+Use: data, row, column
+if (n != null) { total += n.doubleValue(); }
+Def: total
+Use: n, total
+
+List All DU-Pairs Per Variable
+data: Used in ParamChecks, getRowCount(), getValue()
+total: Defined initially and possibly modified in the loop. Used in if condition and for accumulation.
+rowCount: Defined before the loop, used within the loop condition.
+v: Defined and used in the loop.
+validRows: Used in loop condition and to get row.
+row: Defined in the loop, used to get values.
+n: Defined in the loop, used in the null check.
+Coverage per Test Case
+Each test case covers:
+The definition and use of data through mock interactions.
+The initialization and conditional modification of total.
+The definition and use of rowCount through data.getRowCount().
+The loop execution, affecting v, validRows, row, and the internal logic based on n.
+Specific Coverages:
+With Positive Values: Covers the definition and use of all variables due to loop execution and conditions being met for positive value accumulation.
+With Null Input: Directly covers the null check on data.
+With Negative Values, Mixed Values, Zero Values, Large Dataset, No Rows: Each of these tests covers various aspects of the loop and conditionals, specifically the handling of different value types and quantities.
 
 
 ## Range.contains:
