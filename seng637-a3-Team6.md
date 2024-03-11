@@ -152,20 +152,22 @@ public static double calculateColumnTotal(Values2D data, int column,
 ![DFC](media/image2.png)
 
 ## Def-use sets per statement:
-
 1. ParamChecks.nullNotPermitted(data, "data");
    
 Def: None (method call, no variables defined)  
 
 Use: data
-3. double total = 0.0;  
+2. double total = 0.0;  
 
 Def: total
   
 Use: None
-3. if (total > 0){ total = 100; }
-- Def: total (inside the block)
-- Use: total (condition)
+3. if (total > 0){ total = 100; }  
+
+Def: total (inside the block)
+  
+Use: total (condition)
+  
 4. int rowCount = data.getRowCount();
 - Def: rowCount
 - Use: data
