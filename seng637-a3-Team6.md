@@ -167,6 +167,7 @@ public static double calculateColumnTotal(Values2D data, int column,
 
 start/method called: calculateColumnTotal(Values2D data, int column)
 def = {data, column}
+
 1: ParamChecks.nullNotPermitted(data, "data");
 c use = {data}
 
@@ -220,7 +221,15 @@ c use = {total}
 
 | Variable | Defined in node | DCU (v, n) | DPU (v, n) |
 |----------|-------------|-----|-----|
-| value    |1| {1} |{(2,3),(2,4),(3,5),(3,6)}|
+| data    |start| {2, 3, 5, 10} |{}|
+| column    |start| {5, 10} |{}|
+| total   |2| {7, 12, end} |{}|
+| rowCount    |3| {} |{(4,5),(4,9),(8,4),(8,9),(9,10),(9,end),(13,9),(13,end)}|
+| r |4| {5. 8} |{(8,4),(8,9)}|
+| n (1)    |5| {7} |{(6,7),(6,8)}|
+| r2    |9| {10, 13} |{(13,9),(13,end)}|
+| n (2)    |10| {12} |{}|
+
 
 ## Coverage per Test Case
 Each test case covers:
