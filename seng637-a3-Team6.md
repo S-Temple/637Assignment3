@@ -36,7 +36,7 @@ Text…
 
 ### Data Flow Graph:
 
-![DFG](RangeDataFlowDiagram.png)
+![DFG](media/RangeDataFlowDiagram.png)
 
 ### def-use sets per statement/line:
 
@@ -101,8 +101,11 @@ Text…
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
-![instruciton coverage](InstructionCoverage.png)
 
+![Line Coverage](/media/RangeLineCoverage.png)
+
+### Instruction Coverage
+![Instruction coverage](/media/RangeInstrucitonCoverage.png)
 Details of the tested methods with less than 100% coverage:
 
 92.9% coverage of contains method:
@@ -130,7 +133,9 @@ all three of these methods have the same inacessable code for the same reason as
             throw new IllegalArgumentException(msg);
     }
 
-In summary the only reason the tests don't have 100% coverage is because the constructor prevents lower > upper and there is no way to access the private members to create such conditions.
+In summary the only reason the tests don't have 100% coverage is because the constructor prevents lower > upper and there is no way to access the private members to create such conditions without editing values in memory or some other kind of memory corruption.
+
+![Branch Coverage](/media/RangeBranchCoverage.png)
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
