@@ -73,12 +73,13 @@ Range Totals for intentionally covered methods:
 
 
 ![Figure1: Original Range statement(line) coverage](media/image3.png)
-
+Figure1: Original Range statement(line) coverage
 
 ![Figure2: Original Range branch Coverage](media/image4.png)
-
+Figure2: Original Range branch Coverage
 
 ![Figure 3: Original Range Complexity Coverage](media/image1.png)
+Figure 3: Original Range Complexity Coverage
 
 Junit in combination with EclEmma provided all the information we needed.
 
@@ -118,10 +119,13 @@ DataUtilities Totals for intentionally covered methods:
 
 
 ![Figure 4: Original Data Utilities Statement (Line) Coverage](media/image8.png)
+Figure 4: Original Data Utilities Statement (Line) Coverage
 
 ![Figure 5: Original Data Utilities Branch Coverage](media/image5.png)
+Figure 5: Original Data Utilities Branch Coverage
 
 ![Figure 6: Original Data Utilities Complexity Coverage](media/image9.png)
+Figure 6: Original Data Utilities Complexity Coverage
 
 DataUtilities.calculateColumnTotal:
 
@@ -148,7 +152,7 @@ DataUtilities.calculateColumnTotal:
 
 Data Flow Chart:
 
-
+![DFC](media/image2.png)
 
 Def-use sets per statement:
 
@@ -301,14 +305,14 @@ Range Totals remain at:
 27/36 branch paths = 75% branch coverage
 15/22 complexity = 68.18% complexity coverage
 
+![RLC](media/image12.png)
 Range Line coverage
 
+![RBC](media/image4.png)
 Range Branch Coverage
 
-
+![RCC](media/image1.png)
 Range complexity coverage
-
-
 
 DataUtilities
 Added two tests for getCumulativePercentages:
@@ -328,16 +332,14 @@ DataUtilities Totals for intentionally covered methods:
 23/32 branch paths = 71.88% branch coverage (+6.25%)
 15/21 complexity = 71.43% complexity coverage (+9.53%)
 
-
-
+![RLC](media/image8.png)
 Data Utilities statement coverage
 
-
+![DUBC](media/image7.png)
 Data Utilities branch coverage
 
-
+![DUCC](media/image6.png)
 Data Utilities complexity coverage
-
 
 ![Line Coverage](/media/RangeLineCoverage.png)
 
