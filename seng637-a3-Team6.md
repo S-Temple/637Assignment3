@@ -155,6 +155,7 @@ public static double calculateColumnTotal(Values2D data, int column,
 
 start/method called: calculateColumnTotal(Values2D data, int column)
 def = {data, column}
+
 1: ParamChecks.nullNotPermitted(data, "data");
 c use = {data}
 
