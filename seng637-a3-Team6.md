@@ -86,34 +86,33 @@ Junit in combination with EclEmma provided all the information we needed.
 ## DataUtilities
 **calculateColumnTotal**
   - **Lines:** 9/12 Lines = 75% statement Coverage 
-  - **Branches:** 5/8 branches = 62.5% branch coverage 
-  - **Complexity:** 3/5 complexity = 60% complexity coverage
+  - **Branches:** 5/8 Branches = 62.5% branch coverage 
+  - **Complexity:** 3/5 Complexity = 60% complexity coverage
+  - 
+**calculateRowTotal**
+- **Lines:** 9/12 Lines = 75% Instruction Coverage
+- **Branches:** 5/8 Branches = 62.5% branch coverage
+- **Complexity:** 3/5 Complexity = 60% complexity coverage
 
+**getCumulativePercentages**
+- **Lines:** 15/18 Lines = 83.3% Instruction Coverage
+- **Branches:** 7/12 Branches fully covered = 58.3% branch coverage
+- **Complexity:** 3/7 Complexity= 42.9% complexity coverage
 
-calculateRowTotal
-	9/12 Lines= 75% Instruction Coverage
-	5/8  branches = 62.5% branch coverage
-	3/5 complexity - 60% complexity coverage
+**createNumberArray**
+- **Lines:** 5/5 Lines = 100% Instruction Coverage
+- **Branches:** 2/2 fully covered = 100% branch coverage
+- **Complexity:** 2/2 = 100% complexity coverage
 
-getCumulativePercentages
-	15/18 Lines= 83.3% Instruction Coverage
-	7/12 branches = 58.3% branch coverage
-	3/7 complexity - 42.9% complexity coverage
+**createNumberArray2D**
+- **Lines:** 6/6 Lines= 100% Instruction Coverage
+- **Branches:** 2/2 Branches fully covered = 100% branch coverage
+- **Complexity:** 2/2 Complexity = 100% complexity coverage
 
-createNumberArray
-	5/5 Lines= 100% Instruction Coverage
-	2/2 branches fully covered = 100% branch coverage
-	2/2 complexity - 100% complexity coverage
-
-createNumberArray2D
-	6/6 Lines= 100% Instruction Coverage
-2/2 branches fully covered = 100% branch coverage
-2/2 complexity - 100% complexity coverage
-
-DataUtilities Totals for intentionally covered methods:
-44/53 Instructions = 83.02% Instruction Coverage
-21/32 branch paths = 65.63% branch coverage
-13/21 complexity = 61.90% complexity coverage
+**DataUtilities Totals for Intentionally Covered Methods**
+- **Instructions:** 44/53 Instructions = 83.02% Instruction Coverage
+- **Branch Paths:** 21/32 Branch paths = 65.63% branch coverage
+- **Complexity:** 13/21 Complexity = 61.90% complexity coverage
 
 ![Figure 4: Original Data Utilities Statement (Line) Coverage](media/image8.png)
 Figure 4: Original Data Utilities Statement (Line) Coverage
