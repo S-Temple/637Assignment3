@@ -545,22 +545,23 @@ Able to install, but could not get it to recognize any of the JUnit test cases. 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
 With regard to code coverage adequacy criteria and test case correlation, the comparison of requirements-based and coverage-based test creation provides a detailed understanding of their benefits and drawbacks in the context of software testing. 
-**Requirements-Based Test Generation:**
-- **Advantages:** 
-- **Direct Alignment with User Expectations:**Verifies that the program satisfies all stated user requirements, focusing directly on the features that users anticipate.
+**Requirements-Based Test Generation:**  
+
+**Advantages:** 
+- **Direct Alignment with User Expectations:** Verifies that the program satisfies all stated user requirements, focusing directly on the features that users anticipate.
 - **Focused Testing Strategy:** This testing strategy is useful for confirming functional correctness since it focuses on specific requirements, enabling focused testing of key features.
 ** Disadvantages:** 
 - **Potential Ignorance of Unspecified Behaviors:** Potentially neglects to test for behaviors not covered by the original requirements, which could result in the overlooking of edge situations or problems not stated in detail in the specifications.
 - **Requirement Quality Determination:** The precision, thoroughness, and clarity of the user requirements will have a major impact on how well this testing works. Inadequate testing coverage of the functionality of the product might result from poorly defined requirements.
 
-**Coverage-Based Test Generation:** 
-- **Advantages:** 
+**Coverage-Based Test Generation:**  
+**Advantages:** 
 - **Detailed Examination of the Code:** Aiming for high code coverage helps to find hidden vulnerabilities and flaws that aren't immediately related to defined user needs, which improves the overall dependability of the software.
 - **Determination of Unused Routes:** provides a methodical way to locate and test codebase routes that have not been run, possibly exposing unexpected or unwanted behaviors.
 
 **Disadvantages:**
 - **Resource Intensive:** Reaching high coverage metrics can be time- and resource-consuming, making this a more expensive approach in terms of development work.
-- **Risk of Quantity Over Quality:**The danger of choosing quantity over quality Coverage metrics can be prioritized over testing depth, but doing so could lead to tests that are too superficial and don't sufficiently evaluate the software's logic or essential features.
+- **Risk of Quantity Over Quality:** The danger of choosing quantity over quality Coverage metrics can be prioritized over testing depth, but doing so could lead to tests that are too superficial and don't sufficiently evaluate the software's logic or essential features.
 
 Finally, This testing challenge emphasizes how crucial it is to use both approaches simultaneously in order to handle the complex nature of software quality. While coverage-based testing offers an extensive examination of the software's codebase, it also finds flaws that the requirements might have missed. Requirements-based testing guarantees that all functionality significant to the user are tested and satisfy the defined criteria. By combining these techniques, software systems' structural integrity and functional correctness are improved, providing a well-balanced approach that eventually produces more trustworthy software.
 
