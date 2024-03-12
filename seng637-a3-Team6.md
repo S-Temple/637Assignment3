@@ -383,6 +383,7 @@ Details of the tested methods with less than 100% coverage:
 
 92.9% coverage of contains method:
 
+```java
     public boolean contains (double value) {
         if (value < this.lower) {
             return false;
@@ -392,6 +393,7 @@ Details of the tested methods with less than 100% coverage:
         }
         return (value >= this.lower && value <= this.upper);
     }
+```
 
 The last 7.1% is from the final return statement only ever being evaluated to true as false can only occur if the lower bound is greater than the upper. Lower will never be higher than upper as there are no setter methods and the constructor prevents a Range object from being created with lower higher than upper.
 
@@ -401,10 +403,12 @@ The last 7.1% is from the final return statement only ever being evaluated to tr
 
 All three of these methods have the same inaccessible code issue for the same reason as the contains method:
 
+```java
     if (lower > upper) {
         String msg = "Range(double, double): require lower (" + lower + ") <= upper (" + upper + ").";
             throw new IllegalArgumentException(msg);
     }
+```
 
 In summary, the only reason the tests don't have 100% coverage is because the constructor prevents lower > upper and there is no way to access the private members to create such conditions without editing values in memory or some other kind of memory corruption.
 
@@ -416,6 +420,7 @@ Same as instruction coverage the get methods for upper, lower, and length have t
 The contains method has a similar issue to before where this method has branches that will never run due to how the method is written.
 original:
 
+```java
     public boolean contains(double value) {
         if (value < this.lower) {
             return false;
@@ -425,15 +430,19 @@ original:
         }
         return (value >= this.lower && value <= this.upper);
     }
+```
 
 Written so it works, has less code, fewer branches, and all code can be run:
 
+```java
     public boolean contains(double value) {
         return (value >= this.lower && value <= this.upper);
     }
+```
 
 Constrain although every line is run has an else if statement that will never run as the if(!contains(value)) statement will prevent any value within the range from being evaluated at the else if (value < this.lower) making it always evaluate to true.
 
+```java
     public double constrain(double value) {
         double result = value;
         if (!contains(value)) {
@@ -446,9 +455,11 @@ Constrain although every line is run has an else if statement that will never ru
         }
         return result;
     }
+```
 
 Cleaner code that will allow all branches and instructions to be covered:
 
+```java
     public double constrain(double value) {
         double result = value;
         if (!contains(value)) {
@@ -461,6 +472,7 @@ Cleaner code that will allow all branches and instructions to be covered:
         }
         return result;
     }
+```
 
 ### Cyclomatic Complexity Coverage
 ![Complexity Coverage after fixes](/media/RangeCyclomaticComplexityAfter.png)
