@@ -14,11 +14,11 @@
 
 # 1 Introduction
 
-This assignment is similar to assignment 2 but with changed expectations and access to the source code allowing white box testing. After copying the tests from assignment 2 to the new codebase we tested for code coverage metrics before and after attempting to increase our code coverage. For one method from DataUtilities and one from Range we manually analyzed each generating data flow graphs and def-use information to determine what tests would be required for full coverage. Using mainly EclEmma we gathered reports on testing coverage for all tested methods in each class.
+This assignment is similar to assignment 2 with changed expectations and access to the source code allowing white box testing. After copying the tests from assignment 2 to the new codebase we tested for code coverage metrics before and after attempting to increase our code coverage. For one method from DataUtilities and one from Range, we manually analyzed each generating data flow graphs and def-use information to determine what tests would be required for full coverage. Using mainly EclEmma we gathered reports on testing coverage for all tested methods in each class.
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
-Using EclEmma for reports.
+We are using EclEmma for reports.
 Complexity here refers to cyclomatic complexity paths covered.
 
 ## Range
@@ -27,7 +27,7 @@ Instruction coverage before changes
 ![Instruction coverage before changes](/media/RangeInstructionCoverageBefore.png)
 
 
-Instruction Coverage is more detailed then statement as the contains method shows 100% statement but 92.9% isntruction coverage. This is why we used Instruction coverage instead of line/statement coverage for the Range class. It will hopefully allow for improvement in futher sections of the assignment.
+Instruction Coverage is more detailed than a statement as the contains method shows 100% statement but 92.9% instruction coverage; this is why we used Instruction coverage instead of line/statement coverage for the Range class. It will hopefully allow for improvement in the next sections of the assignment.
 
 Branch coverage before changes
 ![Branch coverage before changes](/media/RangeBranchCoverageBefore.png)
@@ -231,13 +231,13 @@ c use = {total}
 
 
 ## Coverage per Test Case
-calculateColumnTotal_WithPositiveValues - most tests cases have this same coverage
+calculateColumnTotal_WithPositiveValues - most test cases have this same coverage
  - Data
    - Covers all DCU pairs - {1, 3, 5, 10}
 - column
    - Covers all DCU pairs - {5, 10}
 - Total
-   - Covers 2 / 3 DCU pairs (one is inaccessable with current code) - {7, end}
+   - Covers 2 / 3 DCU pairs (one is inaccessible with current code) - {7, end}
 - RowCount
    - Covers all accessible Dpu pairs except for (4,9)(when data has no rows)- {(4,5), (8,4), (8,9), (9,end)}
 - r
@@ -247,28 +247,28 @@ calculateColumnTotal_WithPositiveValues - most tests cases have this same covera
    - Covers all Dcu pairs {5, 8}
    - Cover 1/2 Dpu pairs (where n != null) - {(6,7)}
 - r2
-   - Covers the only accesible Dcu pair ({10})
-   - Covers the only accesible Dpu pair ({(13, end)})
+   - Covers the only accessible Dcu pair ({10})
+   - Covers the only accessible Dpu pair ({(13, end)})
 
 calculateColumnTotal_WithNullValue
-   	Same as first test case in section EXCEPT
+   	Same as the first test case in section EXCEPT
     	also covers the last Dpu pair for the n variable (when n is null) - {(6,8)}
 
 calculateColumnTotal_WithNoRows
   	Covers the last accessible rowCount and r Dpu pairs - {(4,9)} for both
 
-The other column total test all have identical coverage to the first test case in this section
+The other columns total test all have identical coverage to the first test case in this section
 All accessible Dcu and Dpu pairs are covered, the rest are locked behind a condition that can't be met
 
 Each test case covers:
 - The definition and use of data through mock interactions.
-- The initialization and conditional modification of total.
+- The initialization and conditional modification of the total.
 - The definition and use of rowCount through data.getRowCount().
 - The loop execution, affecting v, validRows, row, and the internal logic based on n.
 Specific Coverages:
 - With Positive Values: Covers the definition and use of all variables due to loop execution and conditions being met for positive value accumulation.
 - With Null Input: Directly covers the null check on data.
-- With Negative Values, Mixed Values, Zero Values, Large Dataset, No Rows: Each of these tests covers various aspects of the loop and conditionals, specifically the handling of different value types and quantities.
+- With Negative Values, Mixed Values, Zero Values, Large Dataset, and No Rows: Each of these tests covers various aspects of the loop and conditionals, specifically the handling of different value types and quantities.
 
 ## Range.contains:
 ```java
@@ -289,7 +289,7 @@ Specific Coverages:
 
 ## Def-use sets per statement:
 
-line: statement
+line: Statement
 
 1: public boolean contains(double value) {
 
@@ -333,8 +333,8 @@ TC2:value>upper
 
 TC3:lower<value<upper
 
-Other infeasible as it is impossible to have Range with lower > upper. Making line 8 the same as: return true; 
-Good defensive programming to write line 8 the way it is though.
+The other case is infeasible as it is impossible to have Range with lower > upper. Making line 8 the same as: "return true;" 
+it is good defensive programming to write line 8 the way it is though.
 As such it's impossible to improve coverage.
 
 # 3 A detailed description of the testing strategy for the new unit test
@@ -345,17 +345,17 @@ Where the coverage is initially incomplete or missed, the test code is manually 
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
-For Range we had one new test case designed as the testing from the last assignment covered almost all code that is possible to reach.The new test case is for the method equals and it passes a non Range object for comparision which covers some addional code not caught by assignment 2 testing. The only parts left not covered are inaccessible code that although should never be run but is good defensive programming. The details for each method will be covered in later sections.  
+For Range, we had one new test case designed as the testing from the last assignment covered almost all code that is possible to reach. The new test case is for the method equals and it passes a non-Range object for comparison which covers some additional code not caught by assignment 2 testing. The only parts left not covered are inaccessible code that although should never be run is good defensive programming. The details for each method will be covered in later sections.  
 
 **For DataUtilities a few updates were made:**
 1. getCumalitivePercentages had to be updated to include test cases for infinite, NaN, and null values. By adding in these test cases the instruction (statement) coverage was increased as some instructions were missed before.
 2. createNumberArray and createNumberArray2D were updated with new test cases for infinity and NaN values to catch missing branches.
 3. calculateColumnTotal and calculateRowTotal were updated with new test cases for infinity values to catch missing branches and instructions.
 
-# 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
+# 5 A detailed report of the coverage achieved of each class and method (a screenshot from the code cover results in green and red colour would suffice)
 
 ## Range
-changes inculde adding actual intentional tests for contains method with no added coverage. The equals method now has a test for non range objects that brings its coverage up to 100%. We will explain in detail later why its impossible to add tests to increase coverage for most of the other methods without changeing the source code and after how one would change the source code to get 100% coverage.
+Changes include adding actual intentional tests for contains method with no added coverage. The equals method now has a test for non-range objects that brings its coverage up to 100%. We will explain in detail later why it's impossible to add tests to increase coverage for most of the other methods without changing the source code and after how one would change the source code to get 100% coverage.
 	
 Equals:
 
@@ -377,7 +377,7 @@ New Range Totals for intentionally covered methods:
 
 ### Instruction Coverage
 ![Instruction coverage](/media/RangeInstrucitonCoverageAfter.png)
-As shown above the equals method now has 100% coverage due to the additional test for when it is passed a non range object.
+As shown above, the equals method now has 100% coverage due to the additional test for when it is passed a non Range object.
 
 Details of the tested methods with less than 100% coverage:
 
@@ -393,27 +393,27 @@ Details of the tested methods with less than 100% coverage:
         return (value >= this.lower && value <= this.upper);
     }
 
-The last 7.1% is from the final return statement only ever being evaluated to true as false can only occur if the lower bound is greater then the upper. lower will never be higher then upper as there are no setter methods and the constructor prevents a Range object from being created with lower higher then upper.
+The last 7.1% is from the final return statement only ever being evaluated to true as false can only occur if the lower bound is greater than the upper. Lower will never be higher than upper as there are no setter methods and the constructor prevents a Range object from being created with lower higher than upper.
 
-52.2% coverange of getLength
+52.2% coverage of getLength
 
 45% of getUpperBound and getLowerBound
 
-All three of these methods have the same inaccessable code issue for the same reason as the contains method:
+All three of these methods have the same inaccessible code issue for the same reason as the contains method:
 
     if (lower > upper) {
         String msg = "Range(double, double): require lower (" + lower + ") <= upper (" + upper + ").";
             throw new IllegalArgumentException(msg);
     }
 
-In summary the only reason the tests don't have 100% coverage is because the constructor prevents lower > upper and there is no way to access the private members to create such conditions without editing values in memory or some other kind of memory corruption.
+In summary, the only reason the tests don't have 100% coverage is because the constructor prevents lower > upper and there is no way to access the private members to create such conditions without editing values in memory or some other kind of memory corruption.
 
 ### Branch Coverage
 ![Branch Coverage](/media/RangeBranchCoverageAfter.png)
 
-Same as instruction coverage the get methods for upper, lower, and length have the same issue where the code inside if (lower > upper) will never be ran.
+Same as instruction coverage the get methods for upper, lower, and length have the same issue where the code inside if (lower > upper) will never be run.
 
-The contains method has simlar issue to before where this method has branchs that will never run due to how the method is written.
+The contains method has a similar issue to before where this method has branches that will never run due to how the method is written.
 original:
 
     public boolean contains(double value) {
@@ -426,13 +426,13 @@ original:
         return (value >= this.lower && value <= this.upper);
     }
 
-Written so it works, has less code, less branches, and all code can be ran:
+Written so it works, has less code, fewer branches, and all code can be run:
 
     public boolean contains(double value) {
         return (value >= this.lower && value <= this.upper);
     }
 
-constrain although every line is ran has a else if statment that will never run as the if(!contains(value)) statment will prevent any value within the range from being evaluated at the else if (value < this.lower) making it always evaluate to true.
+Constrain although every line is run has an else if statement that will never run as the if(!contains(value)) statement will prevent any value within the range from being evaluated at the else if (value < this.lower) making it always evaluate to true.
 
     public double constrain(double value) {
         double result = value;
@@ -447,7 +447,7 @@ constrain although every line is ran has a else if statment that will never run 
         return result;
     }
 
-Cleaner code that will allow all branches and intructions to be covered:
+Cleaner code that will allow all branches and instructions to be covered:
 
     public double constrain(double value) {
         double result = value;
@@ -467,7 +467,7 @@ Cleaner code that will allow all branches and intructions to be covered:
 
 For all the same reasons as before the get methods for upper, lower and length only have 50% coverage with no way to improve without just removing the bound checking in the source code.
 
-equals method now has 100% coverage due to the test using non Range object. 
+equals method now has 100% coverage due to the test using non Range objects. 
 
 Constrain and contains have less than 100% coverage for the same reasons as before. Without altering the source code as shown in the branch coverage section it is impossible to increase the coverage.
 
@@ -509,7 +509,7 @@ Line coverage, on the other hand, is straightforward, indicating the specific li
 
 Branch coverage focuses on the decision points within the code, allowing developers to identify which conditions have not been fully explored. However, it lacks specificity in indicating which particular branch or condition was missed, necessitating manual investigation to address these gaps.
 
-Complexity coverage delves into the paths taken through an entire method, shedding light on more intricate behaviors and the effectiveness of test coverage on method utilization. Like branch coverage, it does not specify which paths were or were not covered, requiring further manual analysis to enhance coverage. Unfortunately, there is no easily visible overlay over the code for this metric.
+Complexity coverage delves into the paths taken through an entire method, shedding light on more intricate behaviours and the effectiveness of test coverage on method utilization. Like branch coverage, it does not specify which paths were or were not covered, requiring further manual analysis to enhance coverage. Unfortunately, there is no easily visible overlay over the code for this metric.
 
 Method coverage is simpler, essentially indicating whether a method has been tested. This is particularly useful for larger codebases, helping identify untested methods. However, in the context of this lab, its utility is limited due to the ease of manually tracking method coverage.
 
@@ -518,38 +518,38 @@ Method coverage is simpler, essentially indicating whether a method has been tes
 - **Works out of the box with Eclipse + JUnit**
 - **Highlights statement/branch coverage easily**
 
-- **Instruction coverage**: lists amount of bytecode instructions covered, somewhat misleading as the numbers are not 1-1 with lines of code, so depending on which instructions are missed, may have a larger impact on coverage percentage.
-- **Line Coverage**: individual lines of code covered, easy to understand and can tell at a glance what portions of code tests cover. Doesn’t fully explain the more complex interactions for metrics like branch or condition coverage.
-- **Branch coverage**: branch decisions covered, easily see which are not fully explored, to see which conditions tests need to be based around. Does not seem to tell you which specific branch condition(s) were missed just that some were missed. So manual investigation will need to be done to find this out.
-- **Complexity coverage**: paths through the entire method taken, covers more complex behaviors. Can give you an idea of how well the method is utilized by the tests. Does not tell you which possible paths are covered/missed so manual investigation will have to be done to figure out how to raise this coverage. No easily visible overlay over the code.
-- **Methods coverage**: mostly just tells you if a method is covered or not. Useful on a larger codebase scale, to see if methods are missed by testing. On the scale of this lab, however, it is pretty useless as it's easy to keep track of this manually.
+- **Instruction coverage**: Lists the amount of bytecode instructions covered, somewhat misleading as the numbers are not 1-1 with lines of code, so depending on which instructions are missed, may have a larger impact on coverage percentage.
+- **Line Coverage**: Individual lines of code covered, easy to understand and can tell at a glance what portions of code tests cover. Doesn’t fully explain the more complex interactions for metrics like branch or condition coverage.
+- **Branch coverage**: Branch decisions covered, easily see which are not fully explored, to see which conditions tests need to be based around. Does not seem to tell you which specific branch condition(s) were missed just that some were missed. So manual investigation will need to be done to find this out.
+- **Complexity coverage**: Paths through the entire method taken, covers more complex behaviors. Can give you an idea of how well the method is utilized by the tests. Does not tell you which possible paths are covered/missed so a manual investigation will have to be done to figure out how to raise this coverage. No easily visible overlay over the code.
+- **Methods coverage**: Mostly just tells you if a method is covered or not. Useful on a larger codebase scale, to see if methods are missed by testing. On the scale of this lab, however, it is pretty useless as it's easy to keep track of this manually.
 
 ## CodeCover
 The instructions on the code cover site for installing the Eclipse Plugin do not seem to work so this could not be tested.
 
 ## Clover
-Able to install, but could not get it to recognize any of the JUnit test cases. Always returned zero coverage. Appears to need some refactoring of test suite setup or more advanced Eclipse workspace setup to get working.
+Able to install, but could not get it to recognize any of the JUnit test cases. Always returned zero coverage. Appears to need some refactoring of the test suite setup or a more advanced Eclipse workspace setup to get working.
 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
 Text…
 
-# 8 A discussion on how the team work/effort was divided and managed
+# 8 A discussion on how the teamwork/effort was divided and managed
 
-Our team divided work based on individual strengths. We assigned the manual data flow coverage calculations to members with strong analytical skills (John, Sean, Nicholas), while those interested in report organization and writing took on the simpler report sections (Eric, Raisa). We held weekly meetings to track progress, share insights, and collaboratively solve and provide feedback on the new designed unit tests. Task division was dynamic; members could trade tasks based on personal workload or health. Whenever a group member was sick, the work would be picked up by another group member, which improved teamwork and organization of the team. Furthermore, we used a shared repository for code and documentation, ensuring that all team members could review and contribute to each other's work, fostering a collaborative learning environment.
+Our team divided work based on individual strengths. We assigned the manual data flow coverage calculations to members with strong analytical skills (John, Sean, Nicholas), while those interested in report organization and writing took on the simpler report sections (Eric, Raisa). We held weekly meetings to track progress, share insights, and collaboratively solve and provide feedback on the newly designed unit tests. Task division was dynamic; members could trade tasks based on personal workload or health. Whenever a group member was sick, the work would be picked up by another group member, which improved teamwork and organization of the team. Furthermore, we used a shared repository for code and documentation, ensuring that all team members could review and contribute to each other's work, fostering a collaborative learning environment.
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
 
 In addition to the initial challenges, we faced difficulties in manually calculating data flow coverage due to the complexity of understanding the flow of data through the code. This exercise, while challenging, significantly improved our comprehension of how data moves within programs and how this affects testing strategies. We learned the importance of thorough code understanding before test case development, enhancing our ability to write more effective tests.
 
-Regarding lessons learned, one thing that helped significantly was the practice of reflection and feedback—both on the technical aspects of testing and our teamwork. After developing new design tests, we took the time to reflect on what worked, what didn't, and how we could improve which gave us new insights to different ways of coding.
+Regarding lessons learned, one thing that helped significantly was the practice of reflection and feedback—both on the technical aspects of testing and our teamwork. After developing new design tests, we took the time to reflect on what worked, what didn't, and how we could improve which gave us new insights into different ways of coding.
 
-Another lesson was that coverage is a valuable tool for pinpointing what's lacking in test cases. However, it only evaluates if the tests address all aspects of the code, overlooking the requirements. The requirements are important as well in regards to testing, so both work in unison to provide a comprehensive evaluation of the software's functionality and reliability.
+Another lesson was that coverage is a valuable tool for pinpointing what's lacking in test cases. However, it only evaluates if the tests address all aspects of the code, overlooking the requirements. The requirements are important as well regarding testing, so both work in unison to provide a comprehensive evaluation of the software's functionality and reliability.
 
 
 # 10 Comments/feedback on the lab itself
 
-The assignment was well-structured, providing a clear pathway from understanding the basics of testing to applying complex coverage criteria. It was a great opportunity to benchmark how well our unit testing using black-box test-case design techniques in the previous assignment performed, and also how much we could improve it by.
+The assignment was well-structured, providing a clear pathway from understanding the basics of testing to applying complex coverage criteria. It was a great opportunity to benchmark how well our unit testing using black-box test-case design techniques in the previous assignment performed, and also how much we could improve the tests.
 
 However, a more detailed guide on selecting and using code coverage tools would be beneficial, as some team members found the initial setup challenging. Overall, the assignment was an eye-opening learning experience, offering practical skills in testing and insights into test adequacy and code coverage.
 
