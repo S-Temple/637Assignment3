@@ -544,13 +544,15 @@ Able to install, but could not get it to recognize any of the JUnit test cases. 
 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
-With regard to code coverage adequacy criteria and test case correlation, the comparison of requirements-based and coverage-based test creation provides a detailed understanding of their benefits and drawbacks in the context of software testing. 
+With regard to code coverage adequacy criteria and test case correlation, the comparison of requirements-based and coverage-based test creation provides a detailed understanding of their benefits and drawbacks in the context of software testing.  
+
 **Requirements-Based Test Generation:**  
 
 **Advantages:** 
 - **Direct Alignment with User Expectations:** Verifies that the program satisfies all stated user requirements, focusing directly on the features that users anticipate.
 - **Focused Testing Strategy:** This testing strategy is useful for confirming functional correctness since it focuses on specific requirements, enabling focused testing of key features.
-** Disadvantages:** 
+  
+**Disadvantages:** 
 - **Potential Ignorance of Unspecified Behaviors:** Potentially neglects to test for behaviors not covered by the original requirements, which could result in the overlooking of edge situations or problems not stated in detail in the specifications.
 - **Requirement Quality Determination:** The precision, thoroughness, and clarity of the user requirements will have a major impact on how well this testing works. Inadequate testing coverage of the functionality of the product might result from poorly defined requirements.
 
